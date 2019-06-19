@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://github.com/jinsheng20/2019/06/17/hexo%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-06-19T12:49:39.220Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://github.com/jinsheng20/categories/index.html</loc>
     
     <lastmod>2019-06-18T14:57:31.759Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://github.com/jinsheng20/about/index.html</loc>
     
     <lastmod>2019-06-18T14:01:55.046Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://github.com/jinsheng20/2019/06/17/hexo%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2019-06-18T13:18:05.387Z</lastmod>
     
   </url>
   
