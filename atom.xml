@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/jinsheng20/"/>
-  <updated>2019-06-19T12:49:39.220Z</updated>
+  <updated>2019-06-20T13:09:09.198Z</updated>
   <id>https://github.com/jinsheng20/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>S32K AUTOSAR 环境搭建</title>
+    <link href="https://github.com/jinsheng20/2019/06/20/S32K_AUTOSAR/"/>
+    <id>https://github.com/jinsheng20/2019/06/20/S32K_AUTOSAR/</id>
+    <published>2019-06-20T12:58:52.000Z</published>
+    <updated>2019-06-20T13:09:09.198Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;autosar-MCAL-下载-安装&quot;&gt;&lt;a href=&quot;#autosar-MCAL-下载-安装&quot; class=&quot;headerlink&quot; title=&quot;autosar MCAL 下载 安装&quot;&gt;&lt;/a&gt;autosar MCAL 下载
+        
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="S32K" scheme="https://github.com/jinsheng20/tags/S32K/"/>
+    
+      <category term="AUTOSAR" scheme="https://github.com/jinsheng20/tags/AUTOSAR/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo github搭建 主题配置</title>

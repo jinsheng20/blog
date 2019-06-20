@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[S32K AUTOSAR 环境搭建]]></title>
+    <url>%2F2019%2F06%2F20%2FS32K_AUTOSAR%2F</url>
+    <content type="text"><![CDATA[autosar MCAL 下载 安装根据需求在nxp 官网搜索需要的版本下载 和 EB 下载在一个目录下.注意：下载后保存lience autosar OS 下载 安装autosar os 目前只有4.0支持 s32k系列芯片，查找时选择4.0一步一步向下点就能找到下载地址。注意：下载后保存lience EB 简介EB tresos Studio是一个基于Eclipse符合AU-TOSAR标准的车用软件模块配置和代码生成工具环境。通过它，用户可以配置软件模块，验证配置的一致性，以及为标准软件模块(如AUTOSAR标准软件内核)生成代码。 EB tresos下载注意：根据MCAL releasenote中说明下载对应版本。 NXP官网下载链接查找，这个链接找到有点难度，我的方法： 搜索autosar 选择AUTOSAR-4-2: AUTOSAR 4.2.x (Classic Platform) Software 点击下载 选择需要的版本点击下载 进入需要的目录 EB tresos 安装注意：下载时记录lience 安装问题No pagkages were found that can be installed! 解压 下载的 .gz文件 并重命名为 .uip格式。 S32DS 下载注意： 如链接有问题查找 S32DS即可 安装教程：https://blog.csdn.net/zz56z56/article/details/88907425 参考NXP_AUTOSAR_MCAL开发环境搭建引导_S32K14x系列 AUTOSAR各版本对比及模块统计 NXP软件版本介绍]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>S32K</tag>
+        <tag>AUTOSAR</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo github搭建 主题配置]]></title>
     <url>%2F2019%2F06%2F17%2Fhexo%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[参考GitHub+Hexo 搭建个人网站详细教程Hexo 搭建个人博客系列：基础建站篇]]></content>
