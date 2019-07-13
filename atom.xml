@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/jinsheng20/"/>
-  <updated>2019-06-22T14:48:33.112Z</updated>
+  <updated>2019-07-13T11:09:56.953Z</updated>
   <id>https://github.com/jinsheng20/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>嵌入式linux系统与主机通过网络传输文件</title>
+    <link href="https://github.com/jinsheng20/2019/07/13/linux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
+    <id>https://github.com/jinsheng20/2019/07/13/linux系统和设备文件传输/</id>
+    <published>2019-07-13T12:58:53.000Z</published>
+    <updated>2019-07-13T11:09:56.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、从服务器上下载文件&lt;br&gt;scp username@servername:/path/filename /var/www/local_dir（本地目录）&lt;br&gt; 例如scp &lt;a href=&quot;mailto:root@192.168.0.101&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="linux" scheme="https://github.com/jinsheng20/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>嵌入式linux系统与主机通过串口传输文件</title>
+    <link href="https://github.com/jinsheng20/2019/07/13/linux%E4%B8%B2%E5%8F%A3%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6/"/>
+    <id>https://github.com/jinsheng20/2019/07/13/linux串口传输文件/</id>
+    <published>2019-07-13T12:58:52.000Z</published>
+    <updated>2019-07-13T11:19:19.849Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、查看串口是否可用&lt;br&gt;   可以对串口发送数据比如对com1口，echo /dev/ttyS0&lt;br&gt;2、查看串口名称使用&lt;br&gt;   ls -l /dev/ttyS*
+ 
+        
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="串口" scheme="https://github.com/jinsheng20/tags/%E4%B8%B2%E5%8F%A3/"/>
+    
+      <category term="linux" scheme="https://github.com/jinsheng20/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>canopen 入门</title>

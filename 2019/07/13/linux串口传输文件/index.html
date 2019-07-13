@@ -99,16 +99,18 @@
 
 
 
-  <meta name="description" content="开心就好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jin Sheng&#39;s blog">
-<meta property="og:url" content="https://github.com/jinsheng20/tags/S32K/index.html">
+  <meta name="description" content="1、查看串口是否可用   可以对串口发送数据比如对com1口，echo /dev/ttyS02、查看串口名称使用   ls -l /dev/ttyS*   一般情况下串口的名称全部在dev下面，如果你没有外插串口卡的话默认是dev下的ttyS,一般ttyS0对应com1，ttyS1对应com2，当然也不一定是必然的；3、查看串口驱动   cat/proc/tty/drivers/serial4、查">
+<meta name="keywords" content="串口,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式linux系统与主机通过串口传输文件">
+<meta property="og:url" content="https://github.com/jinsheng20/2019/07/13/linux串口传输文件/index.html">
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
-<meta property="og:description" content="开心就好">
+<meta property="og:description" content="1、查看串口是否可用   可以对串口发送数据比如对com1口，echo /dev/ttyS02、查看串口名称使用   ls -l /dev/ttyS*   一般情况下串口的名称全部在dev下面，如果你没有外插串口卡的话默认是dev下的ttyS,一般ttyS0对应com1，ttyS1对应com2，当然也不一定是必然的；3、查看串口驱动   cat/proc/tty/drivers/serial4、查">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-13T11:19:19.849Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jin Sheng&#39;s blog">
-<meta name="twitter:description" content="开心就好">
+<meta name="twitter:title" content="嵌入式linux系统与主机通过串口传输文件">
+<meta name="twitter:description" content="1、查看串口是否可用   可以对串口发送数据比如对com1口，echo /dev/ttyS02、查看串口名称使用   ls -l /dev/ttyS*   一般情况下串口的名称全部在dev下面，如果你没有外插串口卡的话默认是dev下的ttyS,一般ttyS0对应com1，ttyS1对应com2，当然也不一定是必然的；3、查看串口驱动   cat/proc/tty/drivers/serial4、查">
 
 
 
@@ -118,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="https://github.com/jinsheng20/tags/S32K/">
+  <link rel="canonical" href="https://github.com/jinsheng20/2019/07/13/linux串口传输文件/">
 
 
 
@@ -128,7 +130,7 @@
   };
 </script>
 
-  <title>标签: S32K | Jin Sheng's blog</title>
+  <title>嵌入式linux系统与主机通过串口传输文件 | Jin Sheng's blog</title>
   
 
 
@@ -176,7 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/jinsheng20" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,7 +250,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -353,83 +355,263 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>S32K<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-工作" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/jinsheng20/2019/07/13/linux串口传输文件/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin Sheng">
+      <meta itemprop="description" content="开心就好">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jin Sheng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/06/20/S32K_AUTOSAR/" itemprop="url">
-            
-              <span itemprop="name">S32K AUTOSAR 环境搭建</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">嵌入式linux系统与主机通过串口传输文件
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-20T20:58:52+08:00" content="2019-06-20">
-          06-20
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-13 20:58:52 / 修改时间：19:19:19" itemprop="dateCreated datePublished" datetime="2019-07-13T20:58:52+08:00">2019-07-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工作/" itemprop="url" rel="index"><span itemprop="name">工作</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/13/linux串口传输文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/13/linux串口传输文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.3k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、查看串口是否可用<br>   可以对串口发送数据比如对com1口，echo /dev/ttyS0<br>2、查看串口名称使用<br>   ls -l /dev/ttyS*
+  一般情况下串口的名称全部在dev下面，如果你没有外插串口卡的话默认是dev下的ttyS<em>,一般ttyS0对应com1，ttyS1对应com2，当然也不一定是必然的；<br>3、查看串口驱动<br>   cat/proc/tty/drivers/serial<br>4、查看串口设备<br>   dmesg | grep ttyS</em><br>5、查一下板子上的串口有没有设备<br>   dmesg | grep ttyS*
+  如果有ttyS设备，再看/dev/有没有ttyS*，如没有就建立一个：mknod /dev/ttyS0 c 4 64<br>  如果板子的设备中没有标准串口设备ttyS0，也没有ttySAC0。/dev下应该有一个USB串口：/dev/ttyUSB0.</p>
+<p>  当一个串行卡或数据卡被侦测到时，它会被指定成为第一个可用的串行设备。通常是/dev/ttyS1(cua1)或/dev/ttyS2(cua2)，这完成看原已内建的串口数目。ttyS*设备会被报告在/var/run/stab内。</p>
+<p>PC上的串口一般是ttyS，板子上Linux的串口一般叫做ttySAC<br>补充:<br>如果需要查看这个串口设备输出<br>cat ttyUSB0</p>
+<p>如果需要对这个设备输入<br>echo aaaaa&gt;ttyUSB0</p>
+<hr>
+<h1 id="嵌入式linux系统与主机通过串口传输文件"><a href="#嵌入式linux系统与主机通过串口传输文件" class="headerlink" title="嵌入式linux系统与主机通过串口传输文件"></a>嵌入式linux系统与主机通过串口传输文件</h1><p>我想如果要从PC机下载东西到开发板的嵌入式linux系统里面，很多人首先会想到用tftp sftp等网络工具从网口下载。但如果网络用不了，只能通过串口下载怎么办呢？这个时候有两个工具能帮到你：一个是zmrx、zmtx，另外一个是lsz、lrz。个人觉得zmrx/zmtx没有lsz/lrz稳定，建议还是用后者。下面介绍一下lsz/lrz的使用方法。</p>
+<p>一、编译lrzsz并下载到开发板上<br>从<a href="http://download.chinaunix.net/download/0007000/6293.shtml下一个lrzsz的tar包，解压缩后输入./configure，然后进入了src文件夹中，修改了src文件夹中的Makefile文件，配置为与手机对应的交叉编译器，运行make，ok！得到两个可执行文件sz，rz（或者" target="_blank" rel="noopener">http://download.chinaunix.net/download/0007000/6293.shtml下一个lrzsz的tar包，解压缩后输入./configure，然后进入了src文件夹中，修改了src文件夹中的Makefile文件，配置为与手机对应的交叉编译器，运行make，ok！得到两个可执行文件sz，rz（或者</a> lsz，lrz），把它们下载到开发板linux系统的/bin目录下。</p>
+<p>二、情况1: PC机用windows操作系统<br>如果PC机用的是windows操作系统，串口通信工具可以用系统自带的超级终端。下面介绍一下传输文件的方法。</p>
+<p>1、开发板–&gt;PC机<br>在开发板上输入 sz filename。<br>在PC机上点击超级终端的菜单“传送”-&gt; “接收文件”，选择下载的位置和Zmodem 与崩溃恢复协议，点击接收即可。</p>
+<p>2、PC机–&gt;开发板<br>在开发板上先进入/tmp 目录，然后输入 rz。<br>在PC机上点击超级终端的菜单“传送”-&gt; “发送文件”，选择目标文件和Zmodem 与崩溃恢复协议，点击发送即可。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/串口/" rel="tag"><i class="fa fa-tag"></i> 串口</a>
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/22/CanFestival/" rel="next" title="canopen 入门">
+                <i class="fa fa-chevron-left"></i> canopen 入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/13/linux系统和设备文件传输/" rel="prev" title="嵌入式linux系统与主机通过网络传输文件">
+                嵌入式linux系统与主机通过网络传输文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -449,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -566,6 +757,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#嵌入式linux系统与主机通过串口传输文件"><span class="nav-number">1.</span> <span class="nav-text">嵌入式linux系统与主机通过串口传输文件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -730,6 +938,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -775,6 +987,8 @@
 
 
 
+
+  
 
 
   

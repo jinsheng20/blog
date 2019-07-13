@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[嵌入式linux系统与主机通过网络传输文件]]></title>
+    <url>%2F2019%2F07%2F13%2Flinux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%2F</url>
+    <content type="text"><![CDATA[1、从服务器上下载文件scp username@servername:/path/filename /var/www/local_dir（本地目录） 例如scp root@192.168.0.101:/var/www/test.txt 把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录） 2、上传本地文件到服务器scp 文件名字 服务器用户名字@服务器ip:目录scp /path/filename username@servername:/path例如：scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中例子：scp index.html root@58.87.124.110:/home/service-tomcat/webapps/ 3、从服务器下载整个目录scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）例如:scp -r root@192.168.0.101:/var/www/test /var/www/ 4、上传目录到服务器同文件上传只是在文件名字前面加上-rscp -r local_dir username@servername:remote_dir例如：scp -r test/ root@192.168.0.101:/var/www/ 把当前目录下的test目录上传到服务器的/var/www/ 目录 注意：1、要在要上传文件的前面加-r，否则报错 static: not a regular file -r: No such file or directory2、要上传文件后面最好加/]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[嵌入式linux系统与主机通过串口传输文件]]></title>
+    <url>%2F2019%2F07%2F13%2Flinux%E4%B8%B2%E5%8F%A3%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[1、查看串口是否可用 可以对串口发送数据比如对com1口，echo /dev/ttyS02、查看串口名称使用 ls -l /dev/ttyS* 一般情况下串口的名称全部在dev下面，如果你没有外插串口卡的话默认是dev下的ttyS,一般ttyS0对应com1，ttyS1对应com2，当然也不一定是必然的；3、查看串口驱动 cat/proc/tty/drivers/serial4、查看串口设备 dmesg | grep ttyS5、查一下板子上的串口有没有设备 dmesg | grep ttyS* 如果有ttyS设备，再看/dev/有没有ttyS*，如没有就建立一个：mknod /dev/ttyS0 c 4 64 如果板子的设备中没有标准串口设备ttyS0，也没有ttySAC0。/dev下应该有一个USB串口：/dev/ttyUSB0. 当一个串行卡或数据卡被侦测到时，它会被指定成为第一个可用的串行设备。通常是/dev/ttyS1(cua1)或/dev/ttyS2(cua2)，这完成看原已内建的串口数目。ttyS*设备会被报告在/var/run/stab内。 PC上的串口一般是ttyS，板子上Linux的串口一般叫做ttySAC补充:如果需要查看这个串口设备输出cat ttyUSB0 如果需要对这个设备输入echo aaaaa&gt;ttyUSB0 嵌入式linux系统与主机通过串口传输文件我想如果要从PC机下载东西到开发板的嵌入式linux系统里面，很多人首先会想到用tftp sftp等网络工具从网口下载。但如果网络用不了，只能通过串口下载怎么办呢？这个时候有两个工具能帮到你：一个是zmrx、zmtx，另外一个是lsz、lrz。个人觉得zmrx/zmtx没有lsz/lrz稳定，建议还是用后者。下面介绍一下lsz/lrz的使用方法。 一、编译lrzsz并下载到开发板上从http://download.chinaunix.net/download/0007000/6293.shtml下一个lrzsz的tar包，解压缩后输入./configure，然后进入了src文件夹中，修改了src文件夹中的Makefile文件，配置为与手机对应的交叉编译器，运行make，ok！得到两个可执行文件sz，rz（或者 lsz，lrz），把它们下载到开发板linux系统的/bin目录下。 二、情况1: PC机用windows操作系统如果PC机用的是windows操作系统，串口通信工具可以用系统自带的超级终端。下面介绍一下传输文件的方法。 1、开发板–&gt;PC机在开发板上输入 sz filename。在PC机上点击超级终端的菜单“传送”-&gt; “接收文件”，选择下载的位置和Zmodem 与崩溃恢复协议，点击接收即可。 2、PC机–&gt;开发板在开发板上先进入/tmp 目录，然后输入 rz。在PC机上点击超级终端的菜单“传送”-&gt; “发送文件”，选择目标文件和Zmodem 与崩溃恢复协议，点击发送即可。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>串口</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[canopen 入门]]></title>
     <url>%2F2019%2F06%2F22%2FCanFestival%2F</url>
     <content type="text"><![CDATA[相对于其他常用的国外开源的CANopen协议栈，CanFestival具有许多明显的优势： CanFestival为开发者提供了许多工具，以提高开发的便利性。例如用于生成节点对象字典源代码的对象字典编辑器，以及便于开发者自由配置编译选项的配置脚本。 CanFestival能够运行于多种类型的平台。CanFestival源代码由ANSI-C编写，驱动和例程的编译情况仅取决于具体的编译工具。在目前最新的版本中，官方提供了对于多种硬件平台的驱动。此外，CanFestival可以在任意类Unix系统下编译和运行，如Linux和FreeBSD。 CanFestival协议功能完整，完全符合CANopen标准。CanFestival完全支持2002年2月发布的CIA DS-301 V4.02标准，并支持CiA DS302中的简明DFC协议 CanFestival 3.0 RC3 源代码的目录结构如下表所示： 文件路径 文件说明 备注 ./src 与处理器无关的的 CANopen 协议栈 ANSI-C 源代码 ./include 针对各处理器的头文件 ./driver 针对各硬件的驱动 ./examples 用于测试的程序 ./objdictgen 带有图形用户界面的对象字典编辑器 ./doc 说明文档 在CanFestival中，所有源代码可以分为四大部分，分别是目标接口、CAN接口、CanFestival库文件以及主/从节点的应用。其中，CanFestival库文件是整个协议的核心，包括调度管理，节点管理（对象字典访问objacces.c、状态机state.c），CANopen协议（服务数据对象sdo.c、过程数据对象pdo.c、同步对象sync.c、自动波特率对象lss.c、网络管理对象nmtMaster.c和nmtSlave.c）。这些文件在移植时是不需要修改的。主/从节点的应用包括节点状态反馈和设备对象字典的定义。目标接口包括节点硬件的驱动以及对于操作系统的接口，这也是进行移植时主要修改的对象。 由于周期性发射同步信号、心跳报文或SDO超时信号需要设定一系列定时信号来提醒系统进行这些工作，所以CANopen节点必须能实现定时功能。CanFestival在timer.c中执行了一个微型调度程序，他可以使用一个定时器来模拟许多定时器。该调度程序会建立并管理一个警报表，并且在规定的时间发出信号。 本次测试中使用的CanFestival用户手册是PDF文档《CanFestival manual_en》。这篇文档详细介绍了CanFestival 工程中各类接口函数、库函数和一些示例应用程序，其中包括利用Canopen协议开发的示例程序。文档还介绍CanFestival的主要特点和理解这个开源工程代码的过程中需要使用的一些工具和分析方法。这是在进行Canopen通信协议开发过程中需要仔细研读的说明文档 CanFestival工程中文件分类及各部分的功能如下图所示： 基于 rt-thread 中 CanFestival 使用入门 使用 rt-thread 中 CanFestival 前期准备：定时器驱动、CAN硬件驱动 配置包， 位于RT-Thread online packages → miscellaneous packages → CanFestival: A free software CANopen framework 编译下载就会可以收发canopen数据了。需要在canopen_recv_thread_entry线程增加延时为了调度 上位机可以通过 CANPRO 解析接收数据和发送数据]]></content>
