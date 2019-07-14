@@ -26,8 +26,6 @@
 
 
 
-
-
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
 
@@ -49,19 +47,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
 
 
 
@@ -74,10 +72,10 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -89,13 +87,14 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
 
 
 
@@ -222,13 +221,12 @@
 
     
     
-    
       
     
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home  //首页"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home  //��ҳ"></i> <br>首页</a>
 
   </li>
         
@@ -239,13 +237,12 @@
 
     
     
-    
       
     
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user  //关于"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user  //����"></i> <br>关于</a>
 
   </li>
         
@@ -256,13 +253,12 @@
 
     
     
-    
       
     
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags  //标签"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags  //��ǩ"></i> <br>标签</a>
 
   </li>
         
@@ -273,13 +269,12 @@
 
     
     
-    
       
     
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th   //分类"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th   //����"></i> <br>分类</a>
 
   </li>
         
@@ -290,13 +285,12 @@
 
     
     
-    
       
     
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //归档"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //�鵵"></i> <br>归档</a>
 
   </li>
 
@@ -338,10 +332,6 @@
     </div>
   
 </nav>
-
-
-
-  
 
 
 
@@ -402,13 +392,13 @@
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -421,20 +411,17 @@
               
 
               <time title="创建时间：2019-06-22 22:04:06 / 修改时间：22:48:33" itemprop="dateCreated datePublished" datetime="2019-06-22T22:04:06+08:00">2019-06-22</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
+          
 
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -454,8 +441,7 @@
             
             
               
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
@@ -470,8 +456,7 @@
 
           
           
-            <span id="/2019/06/22/CanFestival/" class="leancloud_visitors" data-flag-title="canopen 入门">
-              <span class="post-meta-divider">|</span>
+            <span id="/2019/06/22/CanFestival/" class="post-meta-item leancloud_visitors" data-flag-title="canopen 入门">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -485,25 +470,20 @@
           
 
           
-            <div class="post-symbolscount">
-              
-                <span class="post-meta-divider">|</span>
-              
 
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
               
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.5k</span>
+                <span class="post-meta-item-text">本文字数：</span>
               
+              <span title="本文字数">1.5k</span>
+            </span>
+          
 
-              
-
-              
-            </div>
           
 
           
@@ -582,6 +562,10 @@
       
     </div>
 
+    
+
+    
+      
     
 
     
@@ -798,10 +782,6 @@
           
 
           
-            
-          
-          
-
         </div>
       </div>
 
@@ -828,7 +808,7 @@
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
         
@@ -893,8 +873,6 @@
     
 
     
-
-    
   </div>
 
   
@@ -914,9 +892,8 @@
 
 
 
-
-
-
+  
+  
 
 
 
@@ -940,36 +917,33 @@
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
-  
 
 
-  <script src="/js/utils.js?v=7.1.2"></script>
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script src="/js/motion.js?v=7.1.2"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/affix.js?v=7.1.2"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
   
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
 
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
 
   
 
@@ -979,10 +953,6 @@
 
   
   
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
 
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
@@ -998,7 +968,7 @@
     notify: false,
     appId: '5t6aCSzvdlJiskiDpgVq2o46-gzGzoHsz',
     appKey: 'IJJvYGJ6zJ2uPPupBOh1jyoq',
-    placeholder: '留下你美好的脚印吧',
+    placeholder: '���������õĽ�ӡ��',
     avatar: 'mm',
     meta: guest,
     pageSize: '10' || 10,
@@ -1363,6 +1333,7 @@
   
 
   
+
 
   
 
