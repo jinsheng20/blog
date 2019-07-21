@@ -98,17 +98,17 @@
 
 
 
-  <meta name="description" content="CAN波特率=APB总线频率/BRP分频器/(1+tBS1+tBS2) 位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; }ubuntu自带">
+  <meta name="description" content="位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; } ubuntu自带安装工具安装eclipse也是可行的，执行命令 #apt-get in">
 <meta property="og:type" content="website">
 <meta property="og:title" content="杂项">
 <meta property="og:url" content="https://github.com/jinsheng20/about/index.html">
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
-<meta property="og:description" content="CAN波特率=APB总线频率/BRP分频器/(1+tBS1+tBS2) 位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; }ubuntu自带">
+<meta property="og:description" content="位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; } ubuntu自带安装工具安装eclipse也是可行的，执行命令 #apt-get in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-13T11:48:10.918Z">
+<meta property="og:updated_time" content="2019-07-21T13:28:00.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂项">
-<meta name="twitter:description" content="CAN波特率=APB总线频率/BRP分频器/(1+tBS1+tBS2) 位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; }ubuntu自带">
+<meta name="twitter:description" content="位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; } ubuntu自带安装工具安装eclipse也是可行的，执行命令 #apt-get in">
 
 
 
@@ -397,8 +397,7 @@
       <div class="post-body">
         
         
-          <p>CAN波特率=APB总线频率/BRP分频器/(1+tBS1+tBS2)</p>
-<h2 id="位数从一开始不是从0开始"><a href="#位数从一开始不是从0开始" class="headerlink" title="位数从一开始不是从0开始"></a>位数从一开始不是从0开始</h2><pre><code>int bit_mask(int nbits)
+          <h2 id="位数从一开始不是从0开始"><a href="#位数从一开始不是从0开始" class="headerlink" title="位数从一开始不是从0开始"></a>位数从一开始不是从0开始</h2><pre><code>int bit_mask(int nbits)
 {
     int i;
     int ret = 1;
@@ -407,9 +406,27 @@
         ret = ret * 2+1;
     }
     return ret;
-}</code></pre><p>ubuntu自带安装工具安装eclipse也是可行的，执行命令 #apt-get install eclipse。但是这样安装完后，并不会支持C/C++开发，还需要安装cdt插件，执行命令#apt-get install eclipse-cdt。</p>
+}</code></pre><hr>
+<p>ubuntu自带安装工具安装eclipse也是可行的，执行命令 #apt-get install eclipse。但是这样安装完后，并不会支持C/C++开发，还需要安装cdt插件，执行命令#apt-get install eclipse-cdt。</p>
 <p>ubuntu16.04 默认不带中文输入法需要安装 </p>
 <p>问题:编译时提示头文件#include &lt;mysql/mysql.h&gt;不存在<br>解决方法:sudo apt-get install libmysqlclient-dev -y</p>
+<p>编译开源软件(u-boot， buildroot等)选用开源自带的配置 方法，找到配置文件更改 名字为，.config</p>
+<p>buildroot编译报错<br>Makefile:84: recipe for target ‘_all’ failed<br>因为缺少 libncurses-dev</p>
+<p>板子和主机之间网络通信检查<br>应用层：<br>传输层：端口号是否正确 (tftp 端口固定是69) 端口号是用来驱动同一主机中不同应用的。<br>网络层: ping 命令是否正常<br>物理层：网线插入是否正确</p>
+<h1 id="uboot"><a href="#uboot" class="headerlink" title="uboot"></a>uboot</h1><p>tftp<br>server_ip 变为从环境变量中获取<br>md 内存显示（memory display）<br>uboot中默认不用写0x</p>
+<p>tfpt 20008000 abc<br>把abc 载入到 20008000 位置处 用来下载 linux 内核 文件系统等</p>
+<p>uboot 选择从不同硬件中启动 文件系统。</p>
+<h1 id="如果板子和主机通过网线通信，网线是特制的"><a href="#如果板子和主机通过网线通信，网线是特制的" class="headerlink" title="如果板子和主机通过网线通信，网线是特制的"></a>如果板子和主机通过网线通信，网线是特制的</h1><h1 id="uImages-内核文件是一个比较特殊的格式-前面一段空间是和uboot-有关的东西，-后面才是真正的内核"><a href="#uImages-内核文件是一个比较特殊的格式-前面一段空间是和uboot-有关的东西，-后面才是真正的内核" class="headerlink" title="uImages 内核文件是一个比较特殊的格式 前面一段空间是和uboot 有关的东西， 后面才是真正的内核"></a>uImages 内核文件是一个比较特殊的格式 前面一段空间是和uboot 有关的东西， 后面才是真正的内核</h1><h1 id="log打印出启动内核还是uboot再执行，之后才是内核再运行"><a href="#log打印出启动内核还是uboot再执行，之后才是内核再运行" class="headerlink" title="log打印出启动内核还是uboot再执行，之后才是内核再运行"></a>log打印出启动内核还是uboot再执行，之后才是内核再运行</h1><h1 id="配置参数都是字符串所以不能有空格"><a href="#配置参数都是字符串所以不能有空格" class="headerlink" title="配置参数都是字符串所以不能有空格"></a>配置参数都是字符串所以不能有空格</h1><h1 id="objdump-查看反汇编代码-打开不带后缀的生成文件。"><a href="#objdump-查看反汇编代码-打开不带后缀的生成文件。" class="headerlink" title="objdump 查看反汇编代码 打开不带后缀的生成文件。"></a>objdump 查看反汇编代码 打开不带后缀的生成文件。</h1><hr>
+<p>背光线主要有6根线，12V,12V,EN,ADJ(DIM),GND,GND<br>EN和ADJ是控制线，EN线是使能线，ADJ是背光亮度调节线<br>背光板现在是 WLED</p>
+<hr>
+<p>CAN波特率=APB总线频率/BRP分频器/(1+tBS1+tBS2)</p>
+<p>Socket CAN测试 出现ip: either “dev” is duplicate, or “type” is garbage 问题<br>因为新版BusyBox对Socket CAN的不支持，所以为了测试和使用Socket CAN，我们需要自己编译Socket CAN的工具。这里介绍两个工具，分别是iproute2 和 canutils。</p>
+<p>iproute2<br>（1）下载iproute2的新源码<a href="http://www.kernel.org/pub/linux/utils/net/iproute2/" target="_blank" rel="noopener">http://www.kernel.org/pub/linux/utils/net/iproute2/</a> 。笔者下载的是iproute2 3.6.0。<br>（2）解压iproute2-3.6.0.tar.xz，修改Makefile第33行。<br>        33 #CC = gcc<br>        34 CC = arm-none-linux-gnueabi-gcc<br>（3）因为我们只需要iprout2的ip命令，所以修改Makefile的第42行。<br>        42 #SUBDIRS=lib ip tc bridge misc netem genl man<br>        43 SUBDIRS=lib ip<br>修改完成执行make命令，生成ip命令(编译会报错这个时候ip命令已经生成位于ip文件夹下)，拷贝到开发板文件系统目录。</p>
+<h1 id="设置can-相关命令"><a href="#设置can-相关命令" class="headerlink" title="设置can 相关命令"></a>设置can 相关命令</h1><p>关闭can<br>ifconfig can0 down<br>设置can 通信参数(设置比特率125000)<br>ip link set can0 up type can bitrate 125000 triple-sampling on<br>(ip link set can0 up type can bitrate 125000)</p>
+<p>启动can<br>ifconfig can0 up<br>显示can 详细信息<br>/ip -details link show can0  </p>
+<p>ip命令用来显示或操纵Linux主机的路由、网络设备、策略路由和隧道，是Linux下较新的功能强大的网络配置工具</p>
+<p>ip link list    用ip命令显示网络设备的运行状态</p>
+<hr>
 
         
       </div>
@@ -481,7 +498,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -533,7 +550,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -589,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#位数从一开始不是从0开始"><span class="nav-number">1.</span> <span class="nav-text">位数从一开始不是从0开始</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#位数从一开始不是从0开始"><span class="nav-number">1.</span> <span class="nav-text">位数从一开始不是从0开始</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#uboot"><span class="nav-number"></span> <span class="nav-text">uboot</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果板子和主机通过网线通信，网线是特制的"><span class="nav-number"></span> <span class="nav-text">如果板子和主机通过网线通信，网线是特制的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uImages-内核文件是一个比较特殊的格式-前面一段空间是和uboot-有关的东西，-后面才是真正的内核"><span class="nav-number"></span> <span class="nav-text">uImages 内核文件是一个比较特殊的格式 前面一段空间是和uboot 有关的东西， 后面才是真正的内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#log打印出启动内核还是uboot再执行，之后才是内核再运行"><span class="nav-number"></span> <span class="nav-text">log打印出启动内核还是uboot再执行，之后才是内核再运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置参数都是字符串所以不能有空格"><span class="nav-number"></span> <span class="nav-text">配置参数都是字符串所以不能有空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#objdump-查看反汇编代码-打开不带后缀的生成文件。"><span class="nav-number"></span> <span class="nav-text">objdump 查看反汇编代码 打开不带后缀的生成文件。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置can-相关命令"><span class="nav-number"></span> <span class="nav-text">设置can 相关命令</span></a></li></div>
             
 
           </div>
@@ -625,7 +646,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
   
 
   

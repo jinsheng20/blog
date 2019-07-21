@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[pyqt5笔记]]></title>
+    <url>%2F2019%2F07%2F21%2Fpyqt%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[信号槽连接使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。一种方法是使用lambda表达式。button1.clicked.connect(lambda: self.on_button(1))解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）第2个方法是使用functools里的partial函数。button1.clicked.connect(partial(self.on_button, 1)) 按键事件当我们关闭一个窗口时，在PyQt中就会触发一个QCloseEvent的事件，正常情况下会直接关闭这个窗口， #但是我们不希望这样的事情发生，所以我们需要重新定义QCloseEvent，函数名称为closeEvent不可变 pycharm 安装包可以更改源pycharm 可以根据自己使用习惯更改自己常用软件的快捷键]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>pyqt</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[嵌入式linux系统与主机通过网络传输文件]]></title>
     <url>%2F2019%2F07%2F13%2Flinux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%2F</url>
     <content type="text"><![CDATA[1、从服务器上下载文件scp username@servername:/path/filename /var/www/local_dir（本地目录） 例如scp root@192.168.0.101:/var/www/test.txt 把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir（本地目录） 2、上传本地文件到服务器scp 文件名字 服务器用户名字@服务器ip:目录scp /path/filename username@servername:/path例如：scp /var/www/test.php root@192.168.0.101:/var/www/ 把本机/var/www/目录下的test.php文件上传到192.168.0.101这台服务器上的/var/www/目录中例子：scp index.html root@58.87.124.110:/home/service-tomcat/webapps/ 3、从服务器下载整个目录scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）例如:scp -r root@192.168.0.101:/var/www/test /var/www/ 4、上传目录到服务器同文件上传只是在文件名字前面加上-rscp -r local_dir username@servername:remote_dir例如：scp -r test/ root@192.168.0.101:/var/www/ 把当前目录下的test目录上传到服务器的/var/www/ 目录 注意：1、要在要上传文件的前面加-r，否则报错 static: not a regular file -r: No such file or directory2、要上传文件后面最好加/]]></content>
