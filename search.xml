@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DLT（Diagnostic Log and Trace）简单应用]]></title>
+    <url>%2F2019%2F07%2F26%2Fdlt-log%2F</url>
+    <content type="text"><![CDATA[一、获取dlt-daemon源码 git clone https://github.com/GENIVI/dlt-daemon.git cd dlt-daemon mkdir build cd build cmake .. make sudo make install sudo ldconfigdlt-daemon 编译安装就完成了libdlt.so 位于 /usr/local/libdlt等头文件位置 /usr/local/include/dlt 二、启动dlt-daemon（守护进程）首先复制dlt.conf文件 cd dlt-daemon/src/daemon/ sudo cp dlt.conf /etc/ 可以通过sudo gedit /etc/dlt.conf 更改配置 DLT守护进程是从不同的应用程序中收集日志和跟踪信息的中心位置，这些日志和跟踪信息可以临时存储或永久存储，并传输到DLT客户机应用程序 三、输出日志程序编写可以参考 example 中例子 四、接收日志程序 通过安装 dlt-daemon会自动编译安装这个程序，也可以自己找到同名文件进行编译定制。 dlt-receive -f filter.txt -o ./log.dlt -a localhost dlt-receive -o ./log.dlt -a localhost 五、dlt-viewer 查看日志文件工具现装依赖包 sudo apt-get install libqt5serialport5-dev libqt5serialport5 git clone https://github.com/GENIVI/dlt-viewer.git mkdir build cd build cmake .. make 注意app context默认四字节 id默认一字节更加autosar 协议 所以最大255 输出日志程序， 和守护进程都有缓存机制。 The library path and include path must be set in the build environment prior to building a program using the shared dlt library. you may not call DLT_REGISTER_APP before fork() If your application uses fork(), you may not call DLT_REGISTER_APP before fork(). And fork() should never be called after DLT_REGISTER_APP. This is because of state information and inter process communication channel to daemon would be copied to new process, but threads would be not. # include &lt; dlt / dlt.h &gt; 首先要做的是包含DLT的标准头文件 DLT_DECLARE_CONTEXT (mycontext); 接下来是为应用程序的每个使用上下文创建实例。在使用任何上下文之前，这必须在源代码之外完成。 DLT_IMPORT_CONTEXT (mycontext); 如果在另一个软件模块中第二次使用上下文，则必须调用以下宏来访问上下文。 DLT_REGISTER_APP(“LOG”、“Test Application for Logging”); 在应用程序初始化的下一步中，应用程序必须在DLT守护进程中注册。应用程序的标识符(这里是“LOG”)最多有四个字符。 DLT_REGISTER_CONTEXT(mycontext，&quot;TEST&quot;，&quot; TEST Context for Logging&quot;); 然后必须在DLT守护进程中注册每个上下文。必须调用这个宏，以便DLT守护进程和客户机能够设置应用程序中上下文的日志级别。上下文的标识符(这里是“TEST”)最多有四个字符。此上下文使用默认日志级别和默认跟踪状态。 DLT_REGISTER_CONTEXT(mycontext，&quot;TEST&quot;，&quot; TEST Context for Logging&quot;，DLT_LOG_VERBOSE,DLT_TRACE_STATUS_ON); 作为替代，可以在期间提供特定的日志级别和跟踪状态 上下文的注册。现在在详细模式和非详细模式之间选择: DLT_LOG(mycontext ,DLT_LOG_WARN, DLT_INT(num),DLT_STRING(text)); 对于详细模式(默认):注册之后，可以使用上下文向DLT守护进程发送日志消息。必须使用日志消息的使用日志级别和参数的变量列表调用DLT_LOG宏。您将在附录API规范中找到完整的参数列表。 DLT_LOG_INT (mycontext DLT_LOG_WARN, num);DLT_LOG_STRING_INT(mycontext,DLT_LOG_WARN, text, num); 作为一种替代方法，可以使用高级日志宏来实现参数的特殊组合。您将在附录API规范中找到完整的列表。 DLT_LOG_ID(mycontext,DLT_LOG_WARN,msgid,DLT_INT(num),DLT_STRING(text)); 对于非详细模式:注册之后，可以使用上下文向DLT守护进程发送日志消息。必须使用日志消息的使用日志级别、消息id和参数变量列表调用DLT_LOG_ID宏。您将在API规范中找到完整的参数列表。 int injection_callback(uint32_t service_id, void \*data, uint32_t length); 高级日志宏在非详细模式下不可用。要使用的一个可选特性是消息注入特性。DLT客户机可以将用户定义的消息发送到应用程序，应用程序由服务id(例如0xfff)标识。如果应用程序接收到这样的消息，则调用回调。回调的格式为: DLT_REGISTER_INJECTION_CALLBACK (mycontext,0 xfff injection_callback); 若要在应用程式内登记回调，必须进行以下调用: DLT_TRACE_NETWORK(mycontext, DLT_NW_TRACE_CAN, headerlen, header, payloadlen, payload); 此外，还可以跟踪网络消息。这里必须指定接口DLT_NW_TRACE_CAN、头数据的长度和指向头数据的指针、负载数据的长度和指向负载数据的指针。如果没有头或有效负载可用，则必须将对应的长度设置为0，并且必须将对应的指针设置为NULL。 DLT_UNREGISTER_CONTEXT (mycontext);DLT_UNREGISTER_APP (); 在使用应用程序和上下文之后，必须从DLT守护进程注销它们。首先是所有上下文，然后必须注销应用程序。 参考genivi的DLT移植 DLT（Diagnostic Log and Trace）嵌入式系统程序运行记录]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>dlt</tag>
+        <tag>log</tag>
+        <tag>autosar</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[eclipse C基本操作]]></title>
+    <url>%2F2019%2F07%2F26%2Feclipse%2F</url>
+    <content type="text"><![CDATA[eclipse 导入 现有工程Project Explorer 右键-&gt;import-&gt; General -&gt; Existing Project into Workspace eclipse 配置工程propertise-&gt;c/c++ build-&gt;settings-&gt;Tool SettingsLibraries 设置依赖库Includes 设置依赖头文件GCC C Compiler-&gt;Command: gcc 后面可以加 参数-&gt;Build Artifactartifact name 生成文件名 生成动态库C++ Project-&gt;Shared Library输入运行参数位置在 debug configure-&gt;arg Linux下Eclipse编译时，报recompile with -fPIC错误，解决方法错误：relocation R_X86_64_32 against `‘。rodata’ can not be used when making a shared object; recompile with -fPIC解决方法是：右键Eclipse工程，propertise-&gt;c/c++ build-&gt;settings-&gt;GCC C Compiler-&gt;Command: gcc 后面加上-fPIC,重新编译]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>eclipse</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[pyqt5笔记]]></title>
     <url>%2F2019%2F07%2F21%2Fpyqt%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[信号槽连接使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。一种方法是使用lambda表达式。button1.clicked.connect(lambda: self.on_button(1))解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）第2个方法是使用functools里的partial函数。button1.clicked.connect(partial(self.on_button, 1)) 按键事件当我们关闭一个窗口时，在PyQt中就会触发一个QCloseEvent的事件，正常情况下会直接关闭这个窗口， #但是我们不希望这样的事情发生，所以我们需要重新定义QCloseEvent，函数名称为closeEvent不可变 pycharm 安装包可以更改源pycharm 可以根据自己使用习惯更改自己常用软件的快捷键]]></content>
@@ -31,8 +56,8 @@
         <category>工作</category>
       </categories>
       <tags>
-        <tag>串口</tag>
         <tag>linux</tag>
+        <tag>串口</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/jinsheng20/"/>
-  <updated>2019-07-21T14:39:25.508Z</updated>
+  <updated>2019-07-26T14:17:54.649Z</updated>
   <id>https://github.com/jinsheng20/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DLT（Diagnostic Log and Trace）简单应用</title>
+    <link href="https://github.com/jinsheng20/2019/07/26/dlt-log/"/>
+    <id>https://github.com/jinsheng20/2019/07/26/dlt-log/</id>
+    <published>2019-07-26T13:28:26.000Z</published>
+    <updated>2019-07-26T14:17:54.649Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、获取dlt-daemon源码&quot;&gt;&lt;a href=&quot;#一、获取dlt-daemon源码&quot; class=&quot;headerlink&quot; title=&quot;一、获取dlt-daemon源码&quot;&gt;&lt;/a&gt;一、获取dlt-daemon源码&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;git
+        
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="dlt" scheme="https://github.com/jinsheng20/tags/dlt/"/>
+    
+      <category term="log" scheme="https://github.com/jinsheng20/tags/log/"/>
+    
+      <category term="autosar" scheme="https://github.com/jinsheng20/tags/autosar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eclipse C基本操作</title>
+    <link href="https://github.com/jinsheng20/2019/07/26/eclipse/"/>
+    <id>https://github.com/jinsheng20/2019/07/26/eclipse/</id>
+    <published>2019-07-26T13:21:28.000Z</published>
+    <updated>2019-07-26T13:25:15.412Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;eclipse-导入-现有工程&quot;&gt;&lt;a href=&quot;#eclipse-导入-现有工程&quot; class=&quot;headerlink&quot; title=&quot;eclipse 导入 现有工程&quot;&gt;&lt;/a&gt;eclipse 导入 现有工程&lt;/h1&gt;&lt;p&gt;Project Explorer
+        
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="eclipse" scheme="https://github.com/jinsheng20/tags/eclipse/"/>
+    
+      <category term="工具" scheme="https://github.com/jinsheng20/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>pyqt5笔记</title>
@@ -93,9 +152,9 @@
       <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="串口" scheme="https://github.com/jinsheng20/tags/%E4%B8%B2%E5%8F%A3/"/>
-    
       <category term="linux" scheme="https://github.com/jinsheng20/tags/linux/"/>
+    
+      <category term="串口" scheme="https://github.com/jinsheng20/tags/%E4%B8%B2%E5%8F%A3/"/>
     
   </entry>
   
