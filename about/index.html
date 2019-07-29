@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
 <meta property="og:description" content="位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; } 字符串数组拆分赋值char s[] = &amp;quot;2019/07/25 17:29:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-26T13:26:36.565Z">
+<meta property="og:updated_time" content="2019-07-26T15:00:47.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂项">
 <meta name="twitter:description" content="位数从一开始不是从0开始int bit_mask(int nbits) {     int i;     int ret = 1;     for(i = 0; i &amp;lt; nbits -1;i++)     {         ret = ret * 2+1;     }     return ret; } 字符串数组拆分赋值char s[] = &amp;quot;2019/07/25 17:29:">
@@ -428,6 +428,8 @@ while(p)
 <p>编译开源软件(u-boot， buildroot等)选用开源自带的配置 方法，找到配置文件更改 名字为，.config</p>
 <p>buildroot编译报错<br>Makefile:84: recipe for target ‘_all’ failed<br>因为缺少 libncurses-dev</p>
 <p>板子和主机之间网络通信检查<br>应用层：<br>传输层：端口号是否正确 (tftp 端口固定是69) 端口号是用来驱动同一主机中不同应用的。<br>网络层: ping 命令是否正常<br>物理层：网线插入是否正确</p>
+<p>cmake 指定编译器<br>Do not overwrite CMAKE_C_COMPILER, but export CC (and CXX) before calling cmake:</p>
+<p>export CC=/usr/local/bin/gcc<br>export CXX=/usr/local/bin/g++<br>cmake /path/to/your/project<br>make</p>
 <h1 id="uboot"><a href="#uboot" class="headerlink" title="uboot"></a>uboot</h1><p>tftp<br>server_ip 变为从环境变量中获取<br>md 内存显示（memory display）<br>uboot中默认不用写0x</p>
 <p>tfpt 20008000 abc<br>把abc 载入到 20008000 位置处 用来下载 linux 内核 文件系统等</p>
 <p>uboot 选择从不同硬件中启动 文件系统。</p>
