@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://github.com/jinsheng20/"/>
+  <link href="https:///jinsheng20.github.io/"/>
   <updated>2019-07-26T14:17:54.649Z</updated>
-  <id>https://github.com/jinsheng20/</id>
+  <id>https:///jinsheng20.github.io/</id>
   
   <author>
     <name>Jin Sheng</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>DLT（Diagnostic Log and Trace）简单应用</title>
-    <link href="https://github.com/jinsheng20/2019/07/26/dlt-log/"/>
-    <id>https://github.com/jinsheng20/2019/07/26/dlt-log/</id>
+    <link href="https:///jinsheng20.github.io/2019/07/26/dlt-log/"/>
+    <id>https:///jinsheng20.github.io/2019/07/26/dlt-log/</id>
     <published>2019-07-26T13:28:26.000Z</published>
     <updated>2019-07-26T14:17:54.649Z</updated>
     
@@ -36,21 +36,21 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="dlt" scheme="https://github.com/jinsheng20/tags/dlt/"/>
+      <category term="dlt" scheme="https:///jinsheng20.github.io/tags/dlt/"/>
     
-      <category term="log" scheme="https://github.com/jinsheng20/tags/log/"/>
+      <category term="log" scheme="https:///jinsheng20.github.io/tags/log/"/>
     
-      <category term="autosar" scheme="https://github.com/jinsheng20/tags/autosar/"/>
+      <category term="autosar" scheme="https:///jinsheng20.github.io/tags/autosar/"/>
     
   </entry>
   
   <entry>
     <title>eclipse C基本操作</title>
-    <link href="https://github.com/jinsheng20/2019/07/26/eclipse/"/>
-    <id>https://github.com/jinsheng20/2019/07/26/eclipse/</id>
+    <link href="https:///jinsheng20.github.io/2019/07/26/eclipse/"/>
+    <id>https:///jinsheng20.github.io/2019/07/26/eclipse/</id>
     <published>2019-07-26T13:21:28.000Z</published>
     <updated>2019-07-26T13:25:15.412Z</updated>
     
@@ -66,19 +66,19 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="eclipse" scheme="https://github.com/jinsheng20/tags/eclipse/"/>
+      <category term="eclipse" scheme="https:///jinsheng20.github.io/tags/eclipse/"/>
     
-      <category term="工具" scheme="https://github.com/jinsheng20/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="https:///jinsheng20.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>pyqt5笔记</title>
-    <link href="https://github.com/jinsheng20/2019/07/21/pyqt%E7%AC%94%E8%AE%B0/"/>
-    <id>https://github.com/jinsheng20/2019/07/21/pyqt笔记/</id>
+    <link href="https:///jinsheng20.github.io/2019/07/21/pyqt%E7%AC%94%E8%AE%B0/"/>
+    <id>https:///jinsheng20.github.io/2019/07/21/pyqt笔记/</id>
     <published>2019-07-21T13:00:23.000Z</published>
     <updated>2019-07-21T14:39:25.508Z</updated>
     
@@ -94,19 +94,19 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="pyqt" scheme="https://github.com/jinsheng20/tags/pyqt/"/>
+      <category term="pyqt" scheme="https:///jinsheng20.github.io/tags/pyqt/"/>
     
-      <category term="python" scheme="https://github.com/jinsheng20/tags/python/"/>
+      <category term="python" scheme="https:///jinsheng20.github.io/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>嵌入式linux系统与主机通过网络传输文件</title>
-    <link href="https://github.com/jinsheng20/2019/07/13/linux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
-    <id>https://github.com/jinsheng20/2019/07/13/linux系统和设备文件传输/</id>
+    <link href="https:///jinsheng20.github.io/2019/07/13/linux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
+    <id>https:///jinsheng20.github.io/2019/07/13/linux系统和设备文件传输/</id>
     <published>2019-07-13T12:58:53.000Z</published>
     <updated>2019-07-13T11:09:56.953Z</updated>
     
@@ -122,17 +122,17 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="linux" scheme="https://github.com/jinsheng20/tags/linux/"/>
+      <category term="linux" scheme="https:///jinsheng20.github.io/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>嵌入式linux系统与主机通过串口传输文件</title>
-    <link href="https://github.com/jinsheng20/2019/07/13/linux%E4%B8%B2%E5%8F%A3%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6/"/>
-    <id>https://github.com/jinsheng20/2019/07/13/linux串口传输文件/</id>
+    <link href="https:///jinsheng20.github.io/2019/07/13/linux%E4%B8%B2%E5%8F%A3%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6/"/>
+    <id>https:///jinsheng20.github.io/2019/07/13/linux串口传输文件/</id>
     <published>2019-07-13T12:58:52.000Z</published>
     <updated>2019-07-13T11:19:19.849Z</updated>
     
@@ -149,19 +149,19 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="串口" scheme="https://github.com/jinsheng20/tags/%E4%B8%B2%E5%8F%A3/"/>
+      <category term="串口" scheme="https:///jinsheng20.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
     
-      <category term="linux" scheme="https://github.com/jinsheng20/tags/linux/"/>
+      <category term="linux" scheme="https:///jinsheng20.github.io/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>canopen 入门</title>
-    <link href="https://github.com/jinsheng20/2019/06/22/CanFestival/"/>
-    <id>https://github.com/jinsheng20/2019/06/22/CanFestival/</id>
+    <link href="https:///jinsheng20.github.io/2019/06/22/CanFestival/"/>
+    <id>https:///jinsheng20.github.io/2019/06/22/CanFestival/</id>
     <published>2019-06-22T14:04:06.000Z</published>
     <updated>2019-06-22T14:48:33.112Z</updated>
     
@@ -177,19 +177,19 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="can" scheme="https://github.com/jinsheng20/tags/can/"/>
+      <category term="can" scheme="https:///jinsheng20.github.io/tags/can/"/>
     
-      <category term="canopen" scheme="https://github.com/jinsheng20/tags/canopen/"/>
+      <category term="canopen" scheme="https:///jinsheng20.github.io/tags/canopen/"/>
     
   </entry>
   
   <entry>
     <title>S32K AUTOSAR 环境搭建</title>
-    <link href="https://github.com/jinsheng20/2019/06/20/S32K_AUTOSAR/"/>
-    <id>https://github.com/jinsheng20/2019/06/20/S32K_AUTOSAR/</id>
+    <link href="https:///jinsheng20.github.io/2019/06/20/S32K_AUTOSAR/"/>
+    <id>https:///jinsheng20.github.io/2019/06/20/S32K_AUTOSAR/</id>
     <published>2019-06-20T12:58:52.000Z</published>
     <updated>2019-06-20T13:09:09.198Z</updated>
     
@@ -205,19 +205,19 @@
     
     </summary>
     
-      <category term="工作" scheme="https://github.com/jinsheng20/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工作" scheme="https:///jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
     
     
-      <category term="S32K" scheme="https://github.com/jinsheng20/tags/S32K/"/>
+      <category term="S32K" scheme="https:///jinsheng20.github.io/tags/S32K/"/>
     
-      <category term="AUTOSAR" scheme="https://github.com/jinsheng20/tags/AUTOSAR/"/>
+      <category term="AUTOSAR" scheme="https:///jinsheng20.github.io/tags/AUTOSAR/"/>
     
   </entry>
   
   <entry>
     <title>hexo github搭建 主题配置</title>
-    <link href="https://github.com/jinsheng20/2019/06/17/hexo%E9%85%8D%E7%BD%AE/"/>
-    <id>https://github.com/jinsheng20/2019/06/17/hexo配置/</id>
+    <link href="https:///jinsheng20.github.io/2019/06/17/hexo%E9%85%8D%E7%BD%AE/"/>
+    <id>https:///jinsheng20.github.io/2019/06/17/hexo配置/</id>
     <published>2019-06-17T14:13:57.000Z</published>
     <updated>2019-06-19T12:49:39.220Z</updated>
     
@@ -233,10 +233,10 @@
     
     </summary>
     
-      <category term="博客" scheme="https://github.com/jinsheng20/categories/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="https:///jinsheng20.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="hexo" scheme="https://github.com/jinsheng20/tags/hexo/"/>
+      <category term="hexo" scheme="https:///jinsheng20.github.io/tags/hexo/"/>
     
   </entry>
   
