@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jinsheng20.github.io/"/>
-  <updated>2019-07-26T14:17:54.649Z</updated>
+  <updated>2019-08-11T14:04:59.145Z</updated>
   <id>https://jinsheng20.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>qvtk 环境搭建</title>
+    <link href="https://jinsheng20.github.io/2019/08/11/qvkt-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://jinsheng20.github.io/2019/08/11/qvkt-环境搭建/</id>
+    <published>2019-08-11T13:37:54.000Z</published>
+    <updated>2019-08-11T14:04:59.145Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h1&gt;&lt;p&gt;ubuntu 16.04&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="PCL" scheme="https://jinsheng20.github.io/categories/PCL/"/>
+    
+    
+      <category term="pcl,vtk" scheme="https://jinsheng20.github.io/tags/pcl-vtk/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DLT（Diagnostic Log and Trace）简单应用</title>
     <link href="https://jinsheng20.github.io/2019/07/26/dlt-log/"/>
     <id>https://jinsheng20.github.io/2019/07/26/dlt-log/</id>
     <published>2019-07-26T13:28:26.000Z</published>
-    <updated>2019-07-26T14:17:54.649Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -36,7 +63,7 @@
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="汽车电子" scheme="https://jinsheng20.github.io/categories/%E6%B1%BD%E8%BD%A6%E7%94%B5%E5%AD%90/"/>
     
     
       <category term="dlt" scheme="https://jinsheng20.github.io/tags/dlt/"/>
@@ -52,7 +79,7 @@
     <link href="https://jinsheng20.github.io/2019/07/26/eclipse/"/>
     <id>https://jinsheng20.github.io/2019/07/26/eclipse/</id>
     <published>2019-07-26T13:21:28.000Z</published>
-    <updated>2019-07-26T13:25:15.412Z</updated>
+    <updated>2019-08-11T13:57:39.758Z</updated>
     
     <summary type="html">
     
@@ -60,16 +87,14 @@
       
         
         
-          &lt;h1 id=&quot;eclipse-导入-现有工程&quot;&gt;&lt;a href=&quot;#eclipse-导入-现有工程&quot; class=&quot;headerlink&quot; title=&quot;eclipse 导入 现有工程&quot;&gt;&lt;/a&gt;eclipse 导入 现有工程&lt;/h1&gt;&lt;p&gt;Project Explorer
+          &lt;h1 id=&quot;eclipse-安装&quot;&gt;&lt;a href=&quot;#eclipse-安装&quot; class=&quot;headerlink&quot; title=&quot;eclipse 安装&quot;&gt;&lt;/a&gt;eclipse 安装&lt;/h1&gt;&lt;p&gt;ubuntu自带安装工具安装eclipse也是可行的，执行命令
         
       
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="工具使用" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
     
-    
-      <category term="eclipse" scheme="https://jinsheng20.github.io/tags/eclipse/"/>
     
       <category term="工具" scheme="https://jinsheng20.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
@@ -80,7 +105,7 @@
     <link href="https://jinsheng20.github.io/2019/07/21/pyqt%E7%AC%94%E8%AE%B0/"/>
     <id>https://jinsheng20.github.io/2019/07/21/pyqt笔记/</id>
     <published>2019-07-21T13:00:23.000Z</published>
-    <updated>2019-07-21T14:39:25.508Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -94,12 +119,10 @@
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="python" scheme="https://jinsheng20.github.io/categories/python/"/>
     
     
       <category term="pyqt" scheme="https://jinsheng20.github.io/tags/pyqt/"/>
-    
-      <category term="python" scheme="https://jinsheng20.github.io/tags/python/"/>
     
   </entry>
   
@@ -108,7 +131,7 @@
     <link href="https://jinsheng20.github.io/2019/07/13/linux%E7%B3%BB%E7%BB%9F%E5%92%8C%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
     <id>https://jinsheng20.github.io/2019/07/13/linux系统和设备文件传输/</id>
     <published>2019-07-13T12:58:53.000Z</published>
-    <updated>2019-07-13T11:09:56.953Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -122,10 +145,8 @@
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="嵌入式linux" scheme="https://jinsheng20.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8Flinux/"/>
     
-    
-      <category term="linux" scheme="https://jinsheng20.github.io/tags/linux/"/>
     
   </entry>
   
@@ -134,7 +155,7 @@
     <link href="https://jinsheng20.github.io/2019/07/13/linux%E4%B8%B2%E5%8F%A3%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6/"/>
     <id>https://jinsheng20.github.io/2019/07/13/linux串口传输文件/</id>
     <published>2019-07-13T12:58:52.000Z</published>
-    <updated>2019-07-13T11:19:19.849Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -142,19 +163,18 @@
       
         
         
-          &lt;p&gt;1、查看串口是否可用&lt;br&gt;   可以对串口发送数据比如对com1口，echo /dev/ttyS0&lt;br&gt;2、查看串口名称使用&lt;br&gt;   ls -l /dev/ttyS*
- 
+          &lt;h1 id=&quot;串口指令操作&quot;&gt;&lt;a href=&quot;#串口指令操作&quot; class=&quot;headerlink&quot; title=&quot;串口指令操作&quot;&gt;&lt;/a&gt;串口指令操作&lt;/h1&gt;&lt;p&gt;1、查看串口是否可用&lt;br&gt;   可以对串口发送数据比如对com1口，echo
         
       
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="嵌入式linux" scheme="https://jinsheng20.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8Flinux/"/>
     
-    
-      <category term="linux" scheme="https://jinsheng20.github.io/tags/linux/"/>
     
       <category term="串口" scheme="https://jinsheng20.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
+    
+      <category term="linux" scheme="https://jinsheng20.github.io/tags/linux/"/>
     
   </entry>
   
@@ -163,7 +183,7 @@
     <link href="https://jinsheng20.github.io/2019/06/22/CanFestival/"/>
     <id>https://jinsheng20.github.io/2019/06/22/CanFestival/</id>
     <published>2019-06-22T14:04:06.000Z</published>
-    <updated>2019-06-22T14:48:33.112Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -177,7 +197,7 @@
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="CAN" scheme="https://jinsheng20.github.io/categories/CAN/"/>
     
     
       <category term="can" scheme="https://jinsheng20.github.io/tags/can/"/>
@@ -191,7 +211,7 @@
     <link href="https://jinsheng20.github.io/2019/06/20/S32K_AUTOSAR/"/>
     <id>https://jinsheng20.github.io/2019/06/20/S32K_AUTOSAR/</id>
     <published>2019-06-20T12:58:52.000Z</published>
-    <updated>2019-06-20T13:09:09.198Z</updated>
+    <updated>2019-08-11T12:03:46.785Z</updated>
     
     <summary type="html">
     
@@ -205,7 +225,7 @@
     
     </summary>
     
-      <category term="工作" scheme="https://jinsheng20.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+      <category term="汽车电子" scheme="https://jinsheng20.github.io/categories/%E6%B1%BD%E8%BD%A6%E7%94%B5%E5%AD%90/"/>
     
     
       <category term="S32K" scheme="https://jinsheng20.github.io/tags/S32K/"/>
@@ -219,7 +239,7 @@
     <link href="https://jinsheng20.github.io/2019/06/17/hexo%E9%85%8D%E7%BD%AE/"/>
     <id>https://jinsheng20.github.io/2019/06/17/hexo配置/</id>
     <published>2019-06-17T14:13:57.000Z</published>
-    <updated>2019-06-19T12:49:39.220Z</updated>
+    <updated>2019-08-11T13:35:38.565Z</updated>
     
     <summary type="html">
     
@@ -227,7 +247,7 @@
       
         
         
-          &lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/26625249&quot; target=&quot;_blank&quot;
+          &lt;h1 id=&quot;HEXO-常用命令&quot;&gt;&lt;a href=&quot;#HEXO-常用命令&quot; class=&quot;headerlink&quot; title=&quot;HEXO 常用命令&quot;&gt;&lt;/a&gt;HEXO 常用命令&lt;/h1&gt;&lt;p&gt;hexo n “我的博客” == hexo new “我的博客”
         
       
     
