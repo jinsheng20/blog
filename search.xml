@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[qt应用]]></title>
+    <url>%2F2019%2F08%2F13%2Fqt%E5%BA%94%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[lcdnumber 显示系统时间#include &lt;QTimer&gt; QTimer *timer = new QTimer(this); connect(timer,SIGNAL(timeout()),this,SLOT(on_systemTimeDisplay())); timer-&gt;start(200); //200ms 获取一次 ui-&gt;lcdNumber-&gt;setDigitCount(8); //显示数字数量，包括‘：’ ui-&gt;lcdNumber-&gt;setMode(QLCDNumber::Dec); //设置10进制显示 ui-&gt;lcdNumber-&gt;setSegmentStyle(QLCDNumber::Flat); void Widget::on_systemTimeDisplay() { QTime current_time = QTime::currentTime(); ui-&gt;lcdNumber-&gt;display(current_time.toString(&quot;hh:mm:ss&quot;)); }widget窗口设置Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget) { ui-&gt;setupUi(this); //hide frame 全屏显示去掉最大化最小化关闭 this-&gt;setWindowFlags(Qt::FramelessWindowHint); //fix widow size this-&gt;setFixedSize(1280,1024); //set pos to center this-&gt;move(0,0); }QlineEdit 设置不可编辑并更该默认显示样式ui-&gt;lineEdit-&gt;setEnabled(false); QLineEdit:disabled{background-color: rgb(255, 255, 255);} //设置不可编辑样式qt显示图片或者图片流QString filename(&quot;xx.jpg&quot;); QImage* img = new QImage; if(! ( img-&gt;label(filename) ) ) //加载图像 { delete img; return; } int width = ui-&gt;label-&gt;width(); int height = ui-&gt;label-&gt;height(); QImage ime = img-&gt;scaled(width, height);//自定义缩放 ui-&gt;label-&gt;setPixmap(QPixmap::fromImage(ime)); ui-&gt;label-&gt;show();qt 数据类型转换//int to string QString::number((xx), 10) //double to string QString::number((xx), 10, 3) //保留3位小数 10进制#qt 日志打印输出 qDebug : 调试信息提示 qWarning: 一般的警告提示 qCritical: 严重错误提示 qFatal: 致命错误提示 qt 设置控件不显示setVisible(false) ComboBox控件当选择其中一项时可以通过下面的函数进行处理事件（槽函数）控件槽函数写法 void Widget::on_控件名_信号()void Widget::on_SensorTypeComboBox_activated() 设置默认选中行ui-&gt;listWidget-&gt;setCurrentRow(2); QThread::sleep 线程延时时间]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vtk使用]]></title>
+    <url>%2F2019%2F08%2F13%2Fvtk%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[vtk 和 pcl 资源网址Point Cloud Library (PCL) Users mailing listPoint Cloud Library (PCL) Users mailing list 包含问题的解答http://www.pcl-users.org/ vtk example官方vtk官方使用文档vtk官方库接口说明 pcl官方库接口说明 pcl 博客https://www.cnblogs.com/li-yao7758258/p/6476046.htmlhttps://www.cnblogs.com/flyinggod/category/1180338.html]]></content>
+      <categories>
+        <category>PCL</category>
+      </categories>
+      <tags>
+        <tag>pcl,vtk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[qvtk 环境搭建]]></title>
     <url>%2F2019%2F08%2F11%2Fqvkt-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
     <content type="text"><![CDATA[环境ubuntu 16.04 安装1、首先安装 cmake、qt5和qtcreator sudo apt-get install cmake qt5-default qtcreator2、安装 pcl 库 sudo apt-get install libpcl-dev3、下载vtk 源码 在VTK官网下载，https://www.vtk.org/download/ 4、编译源码 cd vtk-v6.2.0 mkdir build cd build cmake -DVTK_QT_VERSION:STRING=5 \ -DQT_QMAKE_EXECUTABLE:PATH=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake \ -DVTK_Group_Qt:BOOL=ON \ -DCMAKE_PREFIX_PATH:PATH=/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/cmake \ -DBUILD_SHARED_LIBS:BOOL=ON \ /home/vtk-v6.2.0 make -j2编译可能报错这时我们想要的库已经存在了。 5、 复制库到 qt目录下，这样qt中就能看到qvtkWidget控件了 sudo cp ~/Desktop/vtk-v6.2.0/build/lib/libQVTKWidgetPlugin.so /usr/lib/x86_64-linux-gnu/qt5/plugins/designer错误The system is running in low-graphics mode解决方法：https://www.cnblogs.com/Undo-self-blog/p/8098104.html]]></content>
