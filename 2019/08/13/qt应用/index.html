@@ -68,7 +68,7 @@
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
 <meta property="og:description" content="lcdnumber 显示系统时间#include &amp;lt;QTimer&amp;gt;  QTimer *timer = new QTimer(this); connect(timer,SIGNAL(timeout()),this,SLOT(on_systemTimeDisplay())); timer-&amp;gt;start(200);  //200ms 获取一次 ui-&amp;gt;lcdNumber-&amp;gt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T12:47:51.841Z">
+<meta property="og:updated_time" content="2019-08-21T14:12:09.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qt应用">
 <meta name="twitter:description" content="lcdnumber 显示系统时间#include &amp;lt;QTimer&amp;gt;  QTimer *timer = new QTimer(this); connect(timer,SIGNAL(timeout()),this,SLOT(on_systemTimeDisplay())); timer-&amp;gt;start(200);  //200ms 获取一次 ui-&amp;gt;lcdNumber-&amp;gt;">
@@ -304,7 +304,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-14 20:47:51" itemprop="dateModified" datetime="2019-08-14T20:47:51+08:00">2019-08-14</time>
+                <time title="修改时间：2019-08-21 22:12:09" itemprop="dateModified" datetime="2019-08-21T22:12:09+08:00">2019-08-21</time>
               </span>
             
           
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.7k</span>
+              <span title="本文字数">2.9k</span>
             </span>
           
 
@@ -386,7 +386,12 @@ void Widget::on_systemTimeDisplay()
 {
     QTime current_time = QTime::currentTime();
     ui-&gt;lcdNumber-&gt;display(current_time.toString(&quot;hh:mm:ss&quot;));
-}</code></pre><h1 id="widget窗口设置"><a href="#widget窗口设置" class="headerlink" title="widget窗口设置"></a>widget窗口设置</h1><pre><code>Widget::Widget(QWidget *parent) :
+}</code></pre><h1 id="QT-延时"><a href="#QT-延时" class="headerlink" title="QT 延时"></a>QT 延时</h1><pre><code>QTime t;
+t.start();
+while(t.elapsed()&lt;1000)
+    QCoreApplication::processEvents();  //不停地处理事件，以使得程序保持响应。
+
+QThread::sleep(1); //线程延时时间</code></pre><h1 id="widget窗口设置"><a href="#widget窗口设置" class="headerlink" title="widget窗口设置"></a>widget窗口设置</h1><pre><code>Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
 {
@@ -415,11 +420,28 @@ ui-&gt;label-&gt;show();</code></pre><h1 id="qt-数据类型转换"><a href="#qt
 QString::number((xx), 10)
 
 //double to string
-QString::number((xx), 10, 3)   //保留3位小数 10进制</code></pre><p>#qt 日志打印输出<br>    qDebug : 调试信息提示<br>    qWarning: 一般的警告提示<br>    qCritical: 严重错误提示<br>    qFatal: 致命错误提示</p>
-<p>qt 设置控件不显示<br>setVisible(false)</p>
+QString::number((xx), 10, 3)   //保留3位小数 10进制</code></pre><h1 id="qt-日志打印输出"><a href="#qt-日志打印输出" class="headerlink" title="qt 日志打印输出"></a>qt 日志打印输出</h1><pre><code>qDebug : 调试信息提示
+qWarning: 一般的警告提示
+qCritical: 严重错误提示
+qFatal: 致命错误提示</code></pre><h1 id="qt-槽函数-使用自定义数据类型方法"><a href="#qt-槽函数-使用自定义数据类型方法" class="headerlink" title="qt 槽函数 使用自定义数据类型方法"></a>qt 槽函数 使用自定义数据类型方法</h1><p>如果要在Qt信号槽中使用自定义类型，需要注意使用qRegisterMetaType对自定义类型进行注册，当然在不跨线程时使用自定义类型signal/slot来传递，可能不会出现什么问题；一旦涉及跨线程就很容易出错，回想下信号槽的作用就是用来对象与对象之间通信的，难免会跨线程，建议在使用自定义类型利用信号槽通信时，最好先通过qRegisterMetaType()将自定义类型进行注册，以免出错。</p>
+<p>总结qRegisterMetaType使用方法如下：<br>  1、注册位置：在第一次使用此类链接跨线程的signal/slot之前，一般在当前类的构造函数中进行注册；<br>  2、注册方法：在当前类的顶部包含：#include <qmetatype>，构造函数中加入代码：qRegisterMetaType<myclass>(“Myclass”)；<br>  3、Myclass的引用类型需单独注册：qRegisterMetaType<myclass>(“Myclass&amp;”)；</myclass></myclass></qmetatype></p>
+<h1 id="qt-异常错误查找方法"><a href="#qt-异常错误查找方法" class="headerlink" title="qt 异常错误查找方法"></a>qt 异常错误查找方法</h1><pre><code>$ ./test  
+Floating point exception (core dumped)  
+$ dmesg  
+[0.032980] traps: test[122] trap divide error ip:420211 sp:7ffc221f0290 error:0 in test[400000+2000]  
+$ addr2line -e test 420211  
+~/test/test.c:10 
+
+addr2line显示第10行除零错误。程序需要加-g编译debug版本才行，否则命令无法显示行：??:?，因为addr2line是通过查找调试信息定位到行的。
+
+readelf -w test 
+readelf查看符号表  elf 文件查看利器</code></pre><h1 id="qt-widget-窗口设置"><a href="#qt-widget-窗口设置" class="headerlink" title="qt widget 窗口设置"></a>qt widget 窗口设置</h1><pre><code>this-&gt;setWindowFlags(Qt::FramelessWindowHint);   //设置去掉最大最小外边框
+this-&gt;move(760,550);                         //设置 窗口位置 
+this-&gt;setFixedSize(500,460);                 //设置窗口大小
+this-&gt;setWindowFlags(Qt::WindowStaysOnTopHint);  //设置窗口一直保持在顶端
+this-&gt;hide();                                    //设置窗口隐藏</code></pre><p>qt 设置控件不显示<br>setVisible(false)</p>
 <p>ComboBox控件当选择其中一项时可以通过下面的函数进行处理事件（槽函数）<br>控件槽函数写法 void Widget::on_控件名_信号()<br>void Widget::on_SensorTypeComboBox_activated()</p>
 <p>设置默认选中行<br>ui-&gt;listWidget-&gt;setCurrentRow(2);</p>
-<p>QThread::sleep 线程延时时间</p>
 
     </div>
 
@@ -612,7 +634,7 @@ QString::number((xx), 10, 3)   //保留3位小数 10进制</code></pre><p>#qt �
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lcdnumber-显示系统时间"><span class="nav-number">1.</span> <span class="nav-text">lcdnumber 显示系统时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#widget窗口设置"><span class="nav-number">2.</span> <span class="nav-text">widget窗口设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QlineEdit-设置不可编辑并更该默认显示样式"><span class="nav-number">3.</span> <span class="nav-text">QlineEdit 设置不可编辑并更该默认显示样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt显示图片或者图片流"><span class="nav-number">4.</span> <span class="nav-text">qt显示图片或者图片流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-数据类型转换"><span class="nav-number">5.</span> <span class="nav-text">qt 数据类型转换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lcdnumber-显示系统时间"><span class="nav-number">1.</span> <span class="nav-text">lcdnumber 显示系统时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QT-延时"><span class="nav-number">2.</span> <span class="nav-text">QT 延时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#widget窗口设置"><span class="nav-number">3.</span> <span class="nav-text">widget窗口设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QlineEdit-设置不可编辑并更该默认显示样式"><span class="nav-number">4.</span> <span class="nav-text">QlineEdit 设置不可编辑并更该默认显示样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt显示图片或者图片流"><span class="nav-number">5.</span> <span class="nav-text">qt显示图片或者图片流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-数据类型转换"><span class="nav-number">6.</span> <span class="nav-text">qt 数据类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-日志打印输出"><span class="nav-number">7.</span> <span class="nav-text">qt 日志打印输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-槽函数-使用自定义数据类型方法"><span class="nav-number">8.</span> <span class="nav-text">qt 槽函数 使用自定义数据类型方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-异常错误查找方法"><span class="nav-number">9.</span> <span class="nav-text">qt 异常错误查找方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#qt-widget-窗口设置"><span class="nav-number">10.</span> <span class="nav-text">qt widget 窗口设置</span></a></li></ol></div>
             
 
           </div>
@@ -642,7 +664,7 @@ QString::number((xx), 10, 3)   //保留3位小数 10进制</code></pre><p>#qt �
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">20k</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

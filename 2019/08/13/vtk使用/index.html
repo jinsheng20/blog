@@ -68,7 +68,7 @@
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
 <meta property="og:description" content="vtk 和 pcl 资源网址Point Cloud Library (PCL) Users mailing listPoint Cloud Library (PCL) Users mailing list  包含问题的解答http://www.pcl-users.org/ vtk example官方vtk官方使用文档vtk官方库接口说明 pcl官方库接口说明 pcl 博客https://www.c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-13T14:27:49.771Z">
+<meta property="og:updated_time" content="2019-08-21T14:32:54.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vtk使用">
 <meta name="twitter:description" content="vtk 和 pcl 资源网址Point Cloud Library (PCL) Users mailing listPoint Cloud Library (PCL) Users mailing list  包含问题的解答http://www.pcl-users.org/ vtk example官方vtk官方使用文档vtk官方库接口说明 pcl官方库接口说明 pcl 博客https://www.c">
@@ -291,11 +291,21 @@
                 
               
 
-              <time title="创建时间：2019-08-13 21:38:51 / 修改时间：22:27:49" itemprop="dateCreated datePublished" datetime="2019-08-13T21:38:51+08:00">2019-08-13</time>
+              <time title="创建时间：2019-08-13 21:38:51" itemprop="dateCreated datePublished" datetime="2019-08-13T21:38:51+08:00">2019-08-13</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-21 22:32:54" itemprop="dateModified" datetime="2019-08-21T22:32:54+08:00">2019-08-21</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -350,7 +360,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">295</span>
+              <span title="本文字数">7.1k</span>
             </span>
           
 
@@ -367,7 +377,162 @@
 <p><a href="https://lorensen.github.io/VTKExamples/site/" target="_blank" rel="noopener">vtk example官方</a><br><a href="https://vtk.org/documentation/" target="_blank" rel="noopener">vtk官方使用文档</a><br><a href="https://vtk.org/doc/nightly/html/annotated.html" target="_blank" rel="noopener">vtk官方库接口说明</a></p>
 <p><a href="http://docs.pointclouds.org/trunk/annotated.html" target="_blank" rel="noopener">pcl官方库接口说明</a></p>
 <p>pcl 博客<br><a href="https://www.cnblogs.com/li-yao7758258/p/6476046.html" target="_blank" rel="noopener">https://www.cnblogs.com/li-yao7758258/p/6476046.html</a><br><a href="https://www.cnblogs.com/flyinggod/category/1180338.html" target="_blank" rel="noopener">https://www.cnblogs.com/flyinggod/category/1180338.html</a></p>
+<h1 id="VTK-代码片段"><a href="#VTK-代码片段" class="headerlink" title="VTK 代码片段"></a>VTK 代码片段</h1><h2 id="vtk-显示坐标系"><a href="#vtk-显示坐标系" class="headerlink" title="vtk 显示坐标系"></a>vtk 显示坐标系</h2><pre><code>//vtk 设置显示坐标系（坐标系颜色深红色 x轴 绿色 y轴 蓝色 z轴
+#include &lt;vtkAxesActor.h&gt;  //
+#define LINE_LEN  1
 
+vtkSmartPointer&lt;vtkAxesActor&gt; actor2 = vtkSmartPointer&lt;vtkAxesActor&gt;::New();
+actor2-&gt;SetPosition(0, 0, 0);   //设置原点
+actor2-&gt;SetTotalLength(LINE_LEN, LINE_LEN, LINE_LEN);  //设置单位长度
+actor2-&gt;SetShaftType(0);
+actor2-&gt;SetAxisLabels(0);
+actor2-&gt;SetCylinderRadius(0.02);</code></pre><h2 id="vtk-物体位置角度设置"><a href="#vtk-物体位置角度设置" class="headerlink" title="vtk 物体位置角度设置"></a>vtk 物体位置角度设置</h2><pre><code>vtkSmartPointer&lt;vtkTransform&gt; trans = vtkSmartPointer&lt;vtkTransform&gt;::New();
+trans-&gt;PostMultiply();
+trans-&gt;Translate(position-&gt;x, position-&gt;y, position-&gt;z);  //移动位置
+trans-&gt;RotateX(position-&gt;roll);         //沿X轴旋转x度
+trans-&gt;RotateY(position-&gt;pitch);         //沿Y轴旋转x度
+trans-&gt;RotateZ(position-&gt;yaw);         //沿Z轴旋转x度
+
+trans-&gt;Scale(0.5,0.5,0.5);  //实际实物缩放比例
+actor-&gt;SetUserTransform(trans);</code></pre><h2 id="vtk相机位置"><a href="#vtk相机位置" class="headerlink" title="vtk相机位置"></a>vtk相机位置</h2><pre><code>vtkSmartPointer&lt;vtkCamera&gt; camera = vtkSmartPointer&lt;vtkCamera&gt;::New();
+camera-&gt;SetPosition(0, -1, 0);   //相机位置
+camera-&gt;SetFocalPoint(0, 0, 0);  //焦点
+camera-&gt;SetViewUp(0, 0, 1);      //相机方向
+camera-&gt;Azimuth(150);
+camera-&gt;Elevation(30);
+camera-&gt;ComputeViewPlaneNormal(); //根据设置的相机位置、焦点等信息，重新计算视平面(View Plane)的法向量
+
+renderer-&gt;GetActiveCamera()-&gt;Dolly(0.1);  //显示缩放比例，实际坐标并未改变。</code></pre><h2 id="pcl-设置相机位置"><a href="#pcl-设置相机位置" class="headerlink" title="pcl  设置相机位置"></a>pcl  设置相机位置</h2><pre><code>viewer2-&gt;setCameraPosition(30, 0, 15, 1, 0, -1, 0, 0, 1);  //前三个x,y,z,中间 x旋转角度， y旋转角度， z旋转角度， 最后三个取值（-1，1）向上方向</code></pre><h2 id="pcl-点云数据平移-旋转"><a href="#pcl-点云数据平移-旋转" class="headerlink" title="pcl 点云数据平移 旋转"></a>pcl 点云数据平移 旋转</h2><pre><code>#include &lt;vtkTransform.h&gt;  
+//两种实际改变点云位置的点云移动   注释部分没有验证 
+//        //构造变化矩阵
+//        Eigen::Matrix4f transform_1 = Eigen::Matrix4f::Identity();
+//        float theta = M_PI/4;               //旋转的度数，这里是45度
+//    //    transform_1 (0,0) = cos (theta);  //这里是绕的Z轴旋转
+//    //    transform_1 (0,1) = -sin(theta);
+//    //    transform_1 (1,0) = sin (theta);
+//    //    transform_1 (1,1) = cos (theta);
+//        //   transform_1 (0,2) = 0.3;   //这样会产生缩放效果
+//        //   transform_1 (1,2) = 0.6;
+//        //    transform_1 (2,2) = 1;
+//        transform_1 (0,3) = 25; //这里沿X轴平移
+//        transform_1 (1,3) = 30;
+//        transform_1 (2,3) = 380;
+Eigen::Affine3f transform_2 = Eigen::Affine3f::Identity();
+
+// 在 X 轴上定义一个 2.5 米的平移.
+transform_2.translation() &lt;&lt; -5, 0.0, 0.0;
+float theta = M_PI/2;
+// 和前面一样的旋转; Z 轴上旋转 theta 弧度
+transform_2.rotate (Eigen::AngleAxisf (theta, Eigen::Vector3f::UnitZ()));
+// 执行变换，并将结果保存在新创建的 transformed_cloud 中
+pcl::PointCloud&lt;pcl::PointXYZ&gt;::Ptr transformed_cloud (new pcl::PointCloud&lt;pcl::PointXYZ&gt; ());
+// 可以使用 transform_1 或 transform_2; t它们是一样的
+pcl::transformPointCloud (*basic_cloud_ptr, *transformed_cloud, transform_2);</code></pre><h2 id="通过数据时间获取相机参数"><a href="#通过数据时间获取相机参数" class="headerlink" title="通过数据时间获取相机参数"></a>通过数据时间获取相机参数</h2><pre><code>//void Widget::mouseEventOccurred(const pcl::visualization::MouseEvent&amp; event, void *args)
+//{
+//    if (event.getButton () == pcl::visualization::MouseEvent::LeftButton &amp;&amp; event.getType () == pcl::visualization::MouseEvent::MouseButtonRelease)
+//    {
+//        Eigen::Affine3f viewer_pose = viewer-&gt;getViewerPose();
+//        Eigen::Vector3f pos_vector = viewer_pose * Eigen::Vector3f(0, 0, 0);
+//        Eigen::Vector3f look_at_vector = viewer_pose.rotation() * Eigen::Vector3f(0, 0, 1) + pos_vector;
+//        Eigen::Vector3f up_vector = viewer_pose.rotation() * Eigen::Vector3f(0, -1, 0);
+//        m_SLAMCarPos.x =  pos_vector[0];
+//        m_SLAMCarPos.y =  pos_vector[1];
+//        m_SLAMCarPos.z =  pos_vector[2];
+//        m_SLAMCarPos.roll =  up_vector[0];
+//        m_SLAMCarPos.pitch =  up_vector[1];
+//        m_SLAMCarPos.yaw =  up_vector[2];
+//        setCamPosition(m_SLAMCarPos);
+//    }
+//}</code></pre><h2 id="读取-stl-文件并描绘"><a href="#读取-stl-文件并描绘" class="headerlink" title="读取 stl 文件并描绘"></a>读取 stl 文件并描绘</h2><pre><code>//常用到的头文件
+#include &lt;vtkRenderer.h&gt;
+#include &lt;vtkImageViewer2.h&gt;
+#include &lt;QVTKWidget.h&gt;
+#include &lt;vtkJPEGReader.h&gt;
+#include &lt;vtkTexture.h&gt;
+#include &lt;vtkTextureMapToCylinder.h&gt;
+#include &lt;vtkTransformTextureCoords.h&gt;
+
+#include &lt;vtkImageActor.h&gt;
+#include &lt;vtk3DSImporter.h&gt;
+#include &lt;vtkActor.h&gt;
+#include &lt;vtkActorCollection.h&gt;
+#include &lt;vtkCamera.h&gt;
+#include &lt;vtkNamedColors.h&gt;
+#include &lt;vtkProperty.h&gt;
+
+#include &lt;vtkSmartPointer.h&gt;
+#include &lt;vtkPolyData.h&gt;
+#include &lt;vtkSTLReader.h&gt;
+
+#include &lt;vtkAxesActor.h&gt;  //zuobiaoxi
+#include &lt;vtkLight.h&gt;
+#include &lt;vtkTransform.h&gt;  //zhuanhuang pingyi
+
+std::string inputFilename = &quot;~/luhu.stl&quot;;
+
+vtkSmartPointer&lt;vtkSTLReader&gt; reader =
+    vtkSmartPointer&lt;vtkSTLReader&gt;::New();
+reader-&gt;SetFileName(inputFilename.c_str());
+reader-&gt;Update();
+
+vtkSmartPointer&lt;vtkNamedColors&gt; colors =
+    vtkSmartPointer&lt;vtkNamedColors&gt;::New();
+colors-&gt;SetColor(&quot;Bkg&quot;, 0.3, 0.4, 0.5);
+
+vtkSmartPointer&lt;vtkJPEGReader&gt;bmpReader = vtkSmartPointer&lt;vtkJPEGReader&gt;::New();
+bmpReader-&gt;SetFileName(&quot;/mnt/hgfs/linux_share/training_background.jpg&quot;);//读入纹理图
+
+vtkSmartPointer&lt;vtkTexture&gt;texture = vtkSmartPointer&lt;vtkTexture&gt;::New();   //纹理映射
+texture-&gt;SetInputConnection(bmpReader-&gt;GetOutputPort());
+texture-&gt;InterpolateOn();
+
+
+vtkSmartPointer&lt;vtkTextureMapToCylinder&gt; textureMap =
+    vtkSmartPointer&lt;vtkTextureMapToCylinder&gt;::New();
+textureMap-&gt;SetInputConnection(reader-&gt;GetOutputPort());
+
+vtkSmartPointer&lt;vtkTransformTextureCoords&gt; transformTextureCoords =
+    vtkSmartPointer&lt;vtkTransformTextureCoords&gt;::New();
+transformTextureCoords-&gt;SetInputConnection(textureMap-&gt;GetOutputPort());
+//transformTextureCoords-&gt;SetScale(1, 1, 0);
+
+
+// Visualize
+vtkSmartPointer&lt;vtkPolyDataMapper&gt; mapper =
+    vtkSmartPointer&lt;vtkPolyDataMapper&gt;::New();
+mapper-&gt;SetInputConnection(/*textureMap*/transformTextureCoords-&gt;GetOutputPort());
+
+vtkSmartPointer&lt;vtkActor&gt; actor =
+    vtkSmartPointer&lt;vtkActor&gt;::New();
+actor-&gt;SetMapper(mapper);
+actor-&gt;SetTexture(texture);//纹理为actor的一种属性
+
+actor-&gt;GetProperty()-&gt;SetDiffuseColor(0.4, 0, 0);
+actor-&gt;GetProperty()-&gt;SetDiffuse(0.6);    //漫反射
+actor-&gt;GetProperty()-&gt;SetSpecular(0.4);
+actor-&gt;GetProperty()-&gt;SetSpecularColor(
+    colors-&gt;GetColor3d(&quot;White&quot;).GetData());
+actor-&gt;GetProperty()-&gt;SetSpecularPower(30.0);
+
+actor-&gt;GetProperty()-&gt;SetOpacity(1);
+//actor-&gt;SetPosition(100, 0, 0);
+
+
+vtkSmartPointer&lt;vtkLight&gt; myLight = vtkSmartPointer&lt;vtkLight&gt;::New(); //设置光照
+myLight-&gt;SetColor(0,1,0);
+myLight-&gt;SetPosition(0,0,6);
+myLight-&gt;SetFocalPoint(renderer-&gt;GetActiveCamera()-&gt;GetFocalPoint());
+renderer-&gt;AddLight(myLight);
+
+renderer-&gt;AddActor(actor);
+//renderer-&gt;AddActor(actor2);
+renderer-&gt;ResetCamera();
+//renderer-&gt;GetActiveCamera()-&gt;Dolly(0.1);  //显示缩放比例
+renderer-&gt;ResetCameraClippingRange();
+renderer-&gt;SetBackground(.3, .6, .3); // Background color green</code></pre><h2 id="vtk-编译出错-需考虑"><a href="#vtk-编译出错-需考虑" class="headerlink" title="vtk 编译出错 需考虑"></a>vtk 编译出错 需考虑</h2><pre><code>#include &lt;vtkAutoInit.h&gt;
+
+VTK_MODULE_INIT(vtkRenderingOpenGL); //这个必须要加，不然会报错
+VTK_MODULE_INIT(vtkInteractionStyle);</code></pre>
     </div>
 
     
@@ -563,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vtk-和-pcl-资源网址"><span class="nav-number">1.</span> <span class="nav-text">vtk 和 pcl 资源网址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vtk-和-pcl-资源网址"><span class="nav-number">1.</span> <span class="nav-text">vtk 和 pcl 资源网址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VTK-代码片段"><span class="nav-number">2.</span> <span class="nav-text">VTK 代码片段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vtk-显示坐标系"><span class="nav-number">2.1.</span> <span class="nav-text">vtk 显示坐标系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vtk-物体位置角度设置"><span class="nav-number">2.2.</span> <span class="nav-text">vtk 物体位置角度设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vtk相机位置"><span class="nav-number">2.3.</span> <span class="nav-text">vtk相机位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pcl-设置相机位置"><span class="nav-number">2.4.</span> <span class="nav-text">pcl  设置相机位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pcl-点云数据平移-旋转"><span class="nav-number">2.5.</span> <span class="nav-text">pcl 点云数据平移 旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过数据时间获取相机参数"><span class="nav-number">2.6.</span> <span class="nav-text">通过数据时间获取相机参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取-stl-文件并描绘"><span class="nav-number">2.7.</span> <span class="nav-text">读取 stl 文件并描绘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vtk-编译出错-需考虑"><span class="nav-number">2.8.</span> <span class="nav-text">vtk 编译出错 需考虑</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -593,7 +758,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">20k</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
