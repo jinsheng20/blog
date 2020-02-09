@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.8.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="VwtoOecqcfYTmfoHeq9xHylP4uhDFxApxjwbV4ZovhM" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="0.SAE J1939概述SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准，广泛用于是商用车（重卡、大客车等道路车辆和工程机械、农业机械、轨道机车、船舶等非道路车辆及设备）上电子部件间的数字通讯。它由SAE“卡车与大型客车电气与电子委员会”（Truck &amp;amp; Bus Electrical &amp;amp; Electronics Committee）下属的“卡车与大型">
+<meta name="keywords" content="CAN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J1939">
+<meta property="og:url" content="https://jinsheng20.github.io/2020/02/09/J1939/index.html">
+<meta property="og:site_name" content="Jin Sheng&#39;s blog">
+<meta property="og:description" content="0.SAE J1939概述SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准，广泛用于是商用车（重卡、大客车等道路车辆和工程机械、农业机械、轨道机车、船舶等非道路车辆及设备）上电子部件间的数字通讯。它由SAE“卡车与大型客车电气与电子委员会”（Truck &amp;amp; Bus Electrical &amp;amp; Electronics Committee）下属的“卡车与大型">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-09T13:46:48.092Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="J1939">
+<meta name="twitter:description" content="0.SAE J1939概述SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准，广泛用于是商用车（重卡、大客车等道路车辆和工程机械、农业机械、轨道机车、船舶等非道路车辆及设备）上电子部件间的数字通讯。它由SAE“卡车与大型客车电气与电子委员会”（Truck &amp;amp; Bus Electrical &amp;amp; Electronics Committee）下属的“卡车与大型">
+  <link rel="alternate" href="/atom.xml" title="Jin Sheng's blog" type="application/atom+xml">
+  <link rel="canonical" href="https://jinsheng20.github.io/2020/02/09/J1939/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>J1939 | Jin Sheng's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jinsheng20" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jin Sheng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home  //��ҳ"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user  //����"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags  //��ǩ"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th   //����"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //�鵵"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jinsheng20.github.io/2020/02/09/J1939/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin Sheng">
+      <meta itemprop="description" content="开心就好">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jin Sheng's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">J1939
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-09 21:00:23 / 修改时间：21:46:48" itemprop="dateCreated datePublished" datetime="2020-02-09T21:00:23+08:00">2020-02-09</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/J1939/" itemprop="url" rel="index"><span itemprop="name">J1939</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2020/02/09/J1939/" class="post-meta-item leancloud_visitors" data-flag-title="J1939">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2020/02/09/J1939/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/J1939/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">3.2k</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="0-SAE-J1939概述"><a href="#0-SAE-J1939概述" class="headerlink" title="0.SAE J1939概述"></a>0.SAE J1939概述</h2><p>SAE J1939（以下简称J1939）是美国汽车工程协会（SAE）的推荐标准，广泛用于是商用车（重卡、大客车等道路车辆和工程机械、农业机械、轨道机车、船舶等非道路车辆及设备）上电子部件间的数字通讯。它由SAE“卡车与大型客车电气与电子委员会”（Truck &amp; Bus Electrical &amp; Electronics Committee）下属的“卡车与大型客车控制和通讯网络附属委员会”（Truck &amp; Bus Control and Communications Network Subcommittee）开发编写。</p>
+<p>J1939基于德国Bosch公司在上世纪80年代开发的控制器局域网络（Controller Area Network，CAN）， CAN总线。CAN总线描述了一种车辆各控制单元之间不分主从节点的通信网络， 各控制单元之间通过报文通信。</p>
+<p>J1939描述了CAN总线的一种网络应用，包括CAN网络物理层定义、数据链路层定义、应用层定义、网络层定义、故障诊断、和网络管理。在SAE J1939协议中，不仅仅指定了传输类型、报文结构及其分段等，而且报文内容本身也做了精确的定义， 下面对它们详细进行描述。</p>
+<p>SAE J1939 不同于在乘用车行业的CAN通信协议。乘用车行业的CAN通信协议没有统一的行业标准， 基本上由各主机厂依据自己的需要进行定义， 这给主机厂之外的应用人员带来了一定的困难。 而商用车行业的SAE J1939 已成为了全球标准， 除了一些用于保密的厂家私有报文之外， 所有车辆运行参数的报文解析都是公开的， 比如发动机转速、发动机水温、发动机负荷比都可以通过标准报文解析获得。</p>
+<h2 id="1-J1939-网络各层介绍"><a href="#1-J1939-网络各层介绍" class="headerlink" title="1. J1939 网络各层介绍"></a>1. J1939 网络各层介绍</h2><h3 id="1-1-J1939物理层："><a href="#1-1-J1939物理层：" class="headerlink" title="1.1 J1939物理层："></a>1.1 J1939物理层：</h3><p>J1939-11 定义了波特率为250 kb的带屏蔽的三线物理层， 网络主干可达40米长，可挂40个节点；J1939-15 定义了波特率为250 kb的不带屏蔽的两线物理层，网络主干可达40米长，可挂10个节点；还有一个J1939-14定义波特率为500 kb的物理层，目前还没正式推出。</p>
+<h3 id="1-2-J1939数据链路层（基于J1939-21）："><a href="#1-2-J1939数据链路层（基于J1939-21）：" class="headerlink" title="1.2 J1939数据链路层（基于J1939-21）："></a>1.2 J1939数据链路层（基于J1939-21）：</h3><p>J1939 使用一个较简单的数据链路来通信。 如下表所示， 29为CAN ID包括Priority (P), Extended Data Page (EDP), Data Page (DP), Protocol Format （PF）, Protocol Specific (PS), 和 Source Address （SA）六个部分。</p>
+<p>| P | EDP |    DP | PF    | PS | SA |<br>| ——–   | —–:   | :—-: |<br>| 3 bits | 1 bit | 1 bit | 8 bits | 8 bits | 8 bits |<br>P 是优先级, EDP 和 DP 构成不同的4个数据页， 其中一页为ISO 15765-3 预留。PF 和 PS 定义参数组数和目标地址, SA 是源地址。</p>
+<h3 id="1-3-J1939网络层（基于J1939-31）："><a href="#1-3-J1939网络层（基于J1939-31）：" class="headerlink" title="1.3 J1939网络层（基于J1939-31）："></a>1.3 J1939网络层（基于J1939-31）：</h3><p>描述两个网络部分间针对报文传输的网桥的功能，并且只与 J1939网桥实现相关。</p>
+<h3 id="1-4-J1939应用层（基于J1939-71）："><a href="#1-4-J1939应用层（基于J1939-71）：" class="headerlink" title="1.4 J1939应用层（基于J1939-71）："></a>1.4 J1939应用层（基于J1939-71）：</h3><p>描述实际的数据 (参数或带有值域的网络变量、分辨率、物理单元和传输类型) 。每个报文无歧义地对应一个数(参数组数) 。</p>
+<h3 id="1-5-J1939网络管理（基于J1939-81）："><a href="#1-5-J1939网络管理（基于J1939-81）：" class="headerlink" title="1.5 J1939网络管理（基于J1939-81）："></a>1.5 J1939网络管理（基于J1939-81）：</h3><p>可以被当作一个分离的单元，能直达第一层，因此在这个层模型中，该模块是作为右手边的一个独立的功能块。网络管理基本上包括自动分配或决定节点地址(即插即用原则)。在SAE J1939中没有定义节点监视，因而必须在应用时通过循环报文实现。</p>
+<h3 id="1-6-J1939诊断（基于J1939-13-73）"><a href="#1-6-J1939诊断（基于J1939-13-73）" class="headerlink" title="1.6 J1939诊断（基于J1939-13/73）:"></a>1.6 J1939诊断（基于J1939-13/73）:</h3><h2 id="2-J1939-应用介绍"><a href="#2-J1939-应用介绍" class="headerlink" title="2. J1939 应用介绍"></a>2. J1939 应用介绍</h2><h3 id="2-1-J1939-报文"><a href="#2-1-J1939-报文" class="headerlink" title="2.1 J1939 报文"></a>2.1 J1939 报文</h3><p>J1939 报文的核心是Parameter Group Number (PGN)。每个报文的PGN 都是独特的， 用于区分报文和其数据。 尽管有时候一个报文只包含一个参数（如车架号VIN），一般来说，一个报文会含有多个参数。 整个J1939 一共有8672 个PGN。现以PGN 61444 表示的报文为例， 它表示发动机控制单元报文ECU1。 这个报文含有7个不同的参数， 发动机转速值是其中之一。</p>
+<h3 id="2-2-J1939-报文长度"><a href="#2-2-J1939-报文长度" class="headerlink" title="2.2 J1939 报文长度"></a>2.2 J1939 报文长度</h3><p>J1939 允许使用3种不同的报文长度： 3字节、8字节、变长度。 其中， 3字节报文只有一个报文， 那就是请求报文， PGN 59904；绝大多数的报文时8字节，这让网络带宽得到最有效地使用；变长度报文指长度在9字节到1785个字节，这样的报文太长无法放进一个单独的数据帧， 所以必须分解放进不同的数据帧，在接收端再完成重组， 这个步骤由 J1939 的传输协议层里定义。传输协议层定义了两种不同类型的分解方法：BAM和CM。 这两种分解方法有几个不同点， 最主要的是： 1， 目标地址不同，BAM使用全局地址而CM使用特定地址， 正由于寻址上的区别，BAM一次只能发送一个而CM一次可以发送多个。 2， 发送需要的时间不同，BAM 个数据包之间得间隔不短于50毫秒且不超过200 毫秒， 而CM类型的数据包可以发送越快越好。</p>
+<h3 id="2-3-J1939-节点命名"><a href="#2-3-J1939-节点命名" class="headerlink" title="2.3 J1939 节点命名"></a>2.3 J1939 节点命名</h3><p>J1939 网络上的每个电子控制单元（Electronic Control Unit, ECU）都有一个独一无二的名字。 这个名字64位宽， 由下面这几部分组成：Arbitrary Address Capable, Industry Group, Vehicle System Instance, Vehicle System, Reserved Bit, Function, Function instance, ECU Instance, Manufacturer Code, and Identity Number。 这个名字给予每个ECU一个类似于身份样的东西，J1939 网络上的各节点通过这样的名字来互相区分。这个名字也在网络管理上简历优先级。这个64位的名字以数字来表示， 在地址声明时， 这个数字代表优先级， 数字越小优先级越高。</p>
+<p>一个有意思的现象： 有时候一个ECU硬件可以包含多个J1939 网络节点， 也就是一个硬件有多个名字。</p>
+<h3 id="2-4-J1939-地址声明"><a href="#2-4-J1939-地址声明" class="headerlink" title="2.4 J1939 地址声明"></a>2.4 J1939 地址声明</h3><p>在J1939 网络上， 一个节点必须先成功声明一个地址才能启动通信。地址0-128是预先分配好了的， 使用这些地址的节点一上电就可以启动通信。 考虑到将来的节点和功能，J1939 采用了一个动态分配地址的方法。 新接入J1939网络的节点必须先成功为它自己声明一个地址才能发送和接受消息。 当一个新节点要声明地址时， 它发送一个地址声明消息， 该消息含有它想要的地址， 此时， 网络上所有的节点那这个地址和它们自己的地址表进行比较。如果某个高优先级节点正在使用该地址， 这个高优先级节点就说这个地址已经被使用，这个新节点不能声明这个地址， 这次地址声明不成功。如果某个地优先级节点正在使用该地址， 这个低优先级节点立即放弃这个被声明的地址， 然后自己再去声明一个新的， 这个新节点的地址声明成功。</p>
+<h2 id="3-J1939-协议栈"><a href="#3-J1939-协议栈" class="headerlink" title="3. J1939 协议栈"></a>3. J1939 协议栈</h2><p>什么是J1939协议栈？J1939协议栈是一个完整的软件包，该软件包可以处理J1939 各层内容。 简单来说， 对所有要发送的数据， 该软件包负责将应用软件里的数据进行转换、分解、然后把CAN数据帧发送到J1939 网络； 对所有要接收的数据， 该软件包负责从J1939 网络接收、转换、重组， 然后提供给应用软件。1.6 J1939诊断（基于J1939-13/73）:</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/CAN/" rel="tag"><i class="fa fa-tag"></i> CAN</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2020/02/09/autosar com/" rel="next" title="autosar com">
+                <i class="fa fa-chevron-left"></i> autosar com
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jin Sheng</p>
+  <div class="site-description motion-element" itemprop="description">开心就好</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:jinsheng20@outlook.com" title="E-Mail &rarr; mailto:jinsheng20@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-SAE-J1939概述"><span class="nav-number">1.</span> <span class="nav-text">0.SAE J1939概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-J1939-网络各层介绍"><span class="nav-number">2.</span> <span class="nav-text">1. J1939 网络各层介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-J1939物理层："><span class="nav-number">2.1.</span> <span class="nav-text">1.1 J1939物理层：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-J1939数据链路层（基于J1939-21）："><span class="nav-number">2.2.</span> <span class="nav-text">1.2 J1939数据链路层（基于J1939-21）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-J1939网络层（基于J1939-31）："><span class="nav-number">2.3.</span> <span class="nav-text">1.3 J1939网络层（基于J1939-31）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-J1939应用层（基于J1939-71）："><span class="nav-number">2.4.</span> <span class="nav-text">1.4 J1939应用层（基于J1939-71）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-J1939网络管理（基于J1939-81）："><span class="nav-number">2.5.</span> <span class="nav-text">1.5 J1939网络管理（基于J1939-81）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-J1939诊断（基于J1939-13-73）"><span class="nav-number">2.6.</span> <span class="nav-text">1.6 J1939诊断（基于J1939-13/73）:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-J1939-应用介绍"><span class="nav-number">3.</span> <span class="nav-text">2. J1939 应用介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-J1939-报文"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 J1939 报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-J1939-报文长度"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 J1939 报文长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-J1939-节点命名"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 J1939 节点命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-J1939-地址声明"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 J1939 地址声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-J1939-协议栈"><span class="nav-number">4.</span> <span class="nav-text">3. J1939 协议栈</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jin Sheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">37k</span>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '5t6aCSzvdlJiskiDpgVq2o46-gzGzoHsz',
+    appKey: 'IJJvYGJ6zJ2uPPupBOh1jyoq',
+    placeholder: '���������õĽ�ӡ��',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+</body>
+</html>

@@ -60,18 +60,18 @@
   };
 </script>
 
-  <meta name="description" content="信号槽连接使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。一种方法是使用lambda表达式。button1.clicked.connect(lambda: self.on_button(1))解">
+  <meta name="description" content="QChart 图表描绘self._plotChart = QChart() self._plotChart.legend().hide()   #隐藏图例 self._plotChart.setMargins(QMargins(3, 0, 0, 5)) # 设置内边框间距左上右下 self._plotChart.setBackgroundRoundness(0)  # 设置成直角  self._p">
 <meta name="keywords" content="pyqt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pyqt5笔记">
 <meta property="og:url" content="https://jinsheng20.github.io/2019/07/21/pyqt笔记/index.html">
 <meta property="og:site_name" content="Jin Sheng&#39;s blog">
-<meta property="og:description" content="信号槽连接使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。一种方法是使用lambda表达式。button1.clicked.connect(lambda: self.on_button(1))解">
+<meta property="og:description" content="QChart 图表描绘self._plotChart = QChart() self._plotChart.legend().hide()   #隐藏图例 self._plotChart.setMargins(QMargins(3, 0, 0, 5)) # 设置内边框间距左上右下 self._plotChart.setBackgroundRoundness(0)  # 设置成直角  self._p">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-11T12:03:46.785Z">
+<meta property="og:updated_time" content="2020-02-09T13:42:50.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pyqt5笔记">
-<meta name="twitter:description" content="信号槽连接使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。一种方法是使用lambda表达式。button1.clicked.connect(lambda: self.on_button(1))解">
+<meta name="twitter:description" content="QChart 图表描绘self._plotChart = QChart() self._plotChart.legend().hide()   #隐藏图例 self._plotChart.setMargins(QMargins(3, 0, 0, 5)) # 设置内边框间距左上右下 self._plotChart.setBackgroundRoundness(0)  # 设置成直角  self._p">
   <link rel="alternate" href="/atom.xml" title="Jin Sheng's blog" type="application/atom+xml">
   <link rel="canonical" href="https://jinsheng20.github.io/2019/07/21/pyqt笔记/">
 
@@ -304,7 +304,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-11 20:03:46" itemprop="dateModified" datetime="2019-08-11T20:03:46+08:00">2019-08-11</time>
+                <time title="修改时间：2020-02-09 21:42:50" itemprop="dateModified" datetime="2020-02-09T21:42:50+08:00">2020-02-09</time>
               </span>
             
           
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">534</span>
+              <span title="本文字数">3.9k</span>
             </span>
           
 
@@ -373,7 +373,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="信号槽连接"><a href="#信号槽连接" class="headerlink" title="信号槽连接"></a>信号槽连接</h1><p>使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。<br>而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。<br>一种方法是使用lambda表达式。<br>button1.clicked.connect(lambda: self.on_button(1))<br>解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）<br>第2个方法是使用functools里的partial函数。<br>button1.clicked.connect(partial(self.on_button, 1))</p>
+        <h1 id="QChart-图表描绘"><a href="#QChart-图表描绘" class="headerlink" title="QChart 图表描绘"></a>QChart 图表描绘</h1><pre><code>self._plotChart = QChart()
+self._plotChart.legend().hide()   #隐藏图例
+self._plotChart.setMargins(QMargins(3, 0, 0, 5)) # 设置内边框间距左上右下
+self._plotChart.setBackgroundRoundness(0)  # 设置成直角
+
+self._plotChart.createDefaultAxes()
+
+self._plotChart.axisX().setLabelFormat(chartProperty[GlobalVar.AXIS_X_PRO]._labelFormat)  # 设置坐标轴格式
+self._plotChart.axisX().setRange(chartProperty[GlobalVar.AXIS_X_PRO]._min, chartProperty[GlobalVar.AXIS_X_PRO]._max) # 设置坐标轴范围
+self._plotChart.axisX().setTickCount(10)  # 设置多少格 实线
+self._plotChart.axisX().setMinorTickCount(4) # 设置多少分隔 虚线
+self._plotChart.axisX().setGridLineVisible(False)  #设置的实线是否可见</code></pre><h1 id="listWidget-列表自定义"><a href="#listWidget-列表自定义" class="headerlink" title="listWidget 列表自定义"></a>listWidget 列表自定义</h1><pre><code>class MyLable(QWidget, Ui_Form):
+    &quot;&quot;&quot;定义列表的一个item，可以根据需求自定义 &quot;&quot;&quot;
+    def __init__(self, paramDict):
+        &quot;&quot;&quot;
+        :param paramDict
+        &quot;&quot;&quot;
+        super(MyLable, self).__init__()
+        self.setupUi(self)
+        self.name.setText(str(paramDict[&apos;name&apos;]))
+        self.sex.setText(paramDict[&apos;sex&apos;])
+        self.age.setText(str(paramDict[&apos;age&apos;]))
+        self.date.setText(str(paramDict[&apos;date&apos;]))
+
+class TestView(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super(TestView, self).__init__()
+        self.setupUi(self)  
+
+        paramdict ={&apos;name&apos;: &apos;zhang&apos;, &apos;sex&apos;: &apos;U&apos;, &apos;age&apos;: &apos;13&apos;, &apos;date&apos;: &apos;2018-11-1&apos;}
+        # 创建列表
+        for i in range(3):
+            paramdict[&apos;age&apos;] = i
+            self._setItem(paramdict ,i )
+
+        # 设置默认选择第一个
+        self.listWidget.setCurrentRow(0)
+        # 定义item 点击槽
+        self.listWidget.itemClicked.connect(self.itemClickSlot)
+
+    # 设置 item 项
+    def _setItem(self, paramDict, i):
+        item_widget = QListWidgetItem()
+
+        item_widget.setSizeHint(QSize(0, 83))
+        self.listWidget.addItem(item_widget)
+
+        label = MyLable(paramDict)
+        self.listWidget.setItemWidget(item_widget, label)
+        # 设置 item上 按键关联事件
+        label.pushButton.clicked.connect(lambda :self.deleteItem(i))
+
+    def itemClickSlot(self):
+        print(self.listWidget.currentIndex().row())
+
+    def deleteItem(self, i):
+        print(&apos;点击按钮{0}&apos;.format(i))
+        self.listWidget.takeItem(i) # 删除当前item
+        # 全部刪除item
+        # for i in range(self.listWidget.count()):
+        #     print(i)
+        #     self.listWidget.takeItem(0)</code></pre><p>注意：setStyleSheet:QListWidget::item:selected  设置选中后背景图片<br>QListWidget::item:selected{background-image: url(:/img/resources/list_background.png);}</p>
+<h1 id="PyQt中“明天”的表示法"><a href="#PyQt中“明天”的表示法" class="headerlink" title="PyQt中“明天”的表示法"></a>PyQt中“明天”的表示法</h1><p>比如说我们有一个DateEdit控件，叫做beginDayDateEdit,要给它赋上“今天”这个值就可以这样写</p>
+<pre><code>beginDayDateEdit.setDate(QtCore.QDate.currentDate())</code></pre><p>将currentDate先用toJulianDay转成数值形式，然后加1，再用fromJulianDay转回来就可以设置成明天或者其他想要表示得日期</p>
+<pre><code>tomorrow = QtCore.QDate.currentDate().toJulianDay() + 1 
+beginDayDateEdit.setDate(QtCore.QDate.fromJulianDay(tomorrow))</code></pre><p>不过在处理DateTimeEdit的控件会有所差异，此时用的是toTime_t和fromTime_t</p>
+<p>注意:由于控件改变了，setDate也变成了setDateTime,toTime_t把当前时间转成了从1970年1月1日00:00:00到现在的总秒数，要加1天的话，加上86400秒就行了。</p>
+<pre><code>tomorrow = QtCore.QDateTime.currentDateTime().toTime_t() + 86400 
+self.beginDayDateEdit.setDateTime(QtCore.QDateTime.fromTime_t(tomorrow))</code></pre><h1 id="设置日历显示的默认时间是当前时间的前7天"><a href="#设置日历显示的默认时间是当前时间的前7天" class="headerlink" title="设置日历显示的默认时间是当前时间的前7天"></a>设置日历显示的默认时间是当前时间的前7天</h1><pre><code>self.starttime.setDate(QDate.currentDate().addDays(-7)</code></pre><h1 id="设置搜索框，搜索提示"><a href="#设置搜索框，搜索提示" class="headerlink" title="设置搜索框，搜索提示"></a>设置搜索框，搜索提示</h1><pre><code>setPlaceholderText(&apos;nameortelephone&apos;)</code></pre><h1 id="信号槽连接"><a href="#信号槽连接" class="headerlink" title="信号槽连接"></a>信号槽连接</h1><p>使用Pyqt编程过程中，经常会遇到给槽函数传递额外参数的情况。但是信号-槽机制只是指定信号如何连接到槽，信号定义的参数被传递给槽，而额外的参数（用户定义）不能直接传递。<br>而传递额外参数又是很有用处。你可能使用一个槽处理多个组件的信号，有时要传递额外的信息。<br>一种方法是使用lambda表达式。<br>button1.clicked.connect(lambda: self.on_button(1))<br>解释一下，on_button是怎样处理从两个按钮传来的信号。我们使用lambda传递按钮数字给槽，也可以传递任何其他东西—甚至是按钮组件本身（假如，槽打算把传递信号的按钮修改为不可用）<br>第2个方法是使用functools里的partial函数。<br>button1.clicked.connect(partial(self.on_button, 1))</p>
 <h1 id="按键事件"><a href="#按键事件" class="headerlink" title="按键事件"></a>按键事件</h1><p>当我们关闭一个窗口时，在PyQt中就会触发一个QCloseEvent的事件，正常情况下会直接关闭这个窗口，</p>
 <p>#但是我们不希望这样的事情发生，所以我们需要重新定义QCloseEvent，函数名称为closeEvent不可变</p>
 <h1 id="pycharm-安装包可以更改源"><a href="#pycharm-安装包可以更改源" class="headerlink" title="pycharm  安装包可以更改源"></a>pycharm  安装包可以更改源</h1><h1 id="pycharm-可以根据自己使用习惯更改自己常用软件的快捷键"><a href="#pycharm-可以根据自己使用习惯更改自己常用软件的快捷键" class="headerlink" title="pycharm 可以根据自己使用习惯更改自己常用软件的快捷键"></a>pycharm 可以根据自己使用习惯更改自己常用软件的快捷键</h1>
@@ -459,7 +527,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -490,7 +558,15 @@
         
           
         
-        <span class="site-state-item-count">8</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -533,7 +609,11 @@
         
           
         
-        <span class="site-state-item-count">14</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -572,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#信号槽连接"><span class="nav-number">1.</span> <span class="nav-text">信号槽连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按键事件"><span class="nav-number">2.</span> <span class="nav-text">按键事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pycharm-安装包可以更改源"><span class="nav-number">3.</span> <span class="nav-text">pycharm  安装包可以更改源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pycharm-可以根据自己使用习惯更改自己常用软件的快捷键"><span class="nav-number">4.</span> <span class="nav-text">pycharm 可以根据自己使用习惯更改自己常用软件的快捷键</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QChart-图表描绘"><span class="nav-number">1.</span> <span class="nav-text">QChart 图表描绘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#listWidget-列表自定义"><span class="nav-number">2.</span> <span class="nav-text">listWidget 列表自定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PyQt中“明天”的表示法"><span class="nav-number">3.</span> <span class="nav-text">PyQt中“明天”的表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置日历显示的默认时间是当前时间的前7天"><span class="nav-number">4.</span> <span class="nav-text">设置日历显示的默认时间是当前时间的前7天</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置搜索框，搜索提示"><span class="nav-number">5.</span> <span class="nav-text">设置搜索框，搜索提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信号槽连接"><span class="nav-number">6.</span> <span class="nav-text">信号槽连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按键事件"><span class="nav-number">7.</span> <span class="nav-text">按键事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pycharm-安装包可以更改源"><span class="nav-number">8.</span> <span class="nav-text">pycharm  安装包可以更改源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pycharm-可以根据自己使用习惯更改自己常用软件的快捷键"><span class="nav-number">9.</span> <span class="nav-text">pycharm 可以根据自己使用习惯更改自己常用软件的快捷键</span></a></li></ol></div>
             
 
           </div>
@@ -591,7 +671,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -602,7 +682,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">20k</span>
+    <span title="站点总字数">37k</span>
 </div>
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

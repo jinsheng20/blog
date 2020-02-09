@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.8.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="VwtoOecqcfYTmfoHeq9xHylP4uhDFxApxjwbV4ZovhM" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="本文链接：https://blog.csdn.net/AgingMoon/article/details/78225200本篇文章主要从以下几个方面进行讲解 1.OBD用来做什么2.OBD和UDS的区别3.OBD硬件接口简介4.OBD的9大模式介绍OBD（On-Board Diagnostic）指的是在线诊断系统，是汽车上的一种用于监控车辆状况以及控制排放的一种在线诊断系统。本篇文章主要围绕OBD">
+<meta name="keywords" content="诊断协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="obd诊断协议">
+<meta property="og:url" content="https://jinsheng20.github.io/2019/08/27/obd诊断协议/index.html">
+<meta property="og:site_name" content="Jin Sheng&#39;s blog">
+<meta property="og:description" content="本文链接：https://blog.csdn.net/AgingMoon/article/details/78225200本篇文章主要从以下几个方面进行讲解 1.OBD用来做什么2.OBD和UDS的区别3.OBD硬件接口简介4.OBD的9大模式介绍OBD（On-Board Diagnostic）指的是在线诊断系统，是汽车上的一种用于监控车辆状况以及控制排放的一种在线诊断系统。本篇文章主要围绕OBD">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-09T13:02:23.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="obd诊断协议">
+<meta name="twitter:description" content="本文链接：https://blog.csdn.net/AgingMoon/article/details/78225200本篇文章主要从以下几个方面进行讲解 1.OBD用来做什么2.OBD和UDS的区别3.OBD硬件接口简介4.OBD的9大模式介绍OBD（On-Board Diagnostic）指的是在线诊断系统，是汽车上的一种用于监控车辆状况以及控制排放的一种在线诊断系统。本篇文章主要围绕OBD">
+  <link rel="alternate" href="/atom.xml" title="Jin Sheng's blog" type="application/atom+xml">
+  <link rel="canonical" href="https://jinsheng20.github.io/2019/08/27/obd诊断协议/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>obd诊断协议 | Jin Sheng's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jinsheng20" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jin Sheng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home  //��ҳ"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user  //����"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags  //��ǩ"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th   //����"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive //�鵵"></i> <br>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
+          
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jinsheng20.github.io/2019/08/27/obd诊断协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jin Sheng">
+      <meta itemprop="description" content="开心就好">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jin Sheng's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">obd诊断协议
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-27 21:23:17" itemprop="dateCreated datePublished" datetime="2019-08-27T21:23:17+08:00">2019-08-27</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-09 21:02:23" itemprop="dateModified" datetime="2020-02-09T21:02:23+08:00">2020-02-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CAN/" itemprop="url" rel="index"><span itemprop="name">CAN</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/08/27/obd诊断协议/" class="post-meta-item leancloud_visitors" data-flag-title="obd诊断协议">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2019/08/27/obd诊断协议/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/27/obd诊断协议/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">5.5k</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文链接：<a href="https://blog.csdn.net/AgingMoon/article/details/78225200" target="_blank" rel="noopener">https://blog.csdn.net/AgingMoon/article/details/78225200</a><br>本篇文章主要从以下几个方面进行讲解</p>
+<p>1.OBD用来做什么<br>2.OBD和UDS的区别<br>3.OBD硬件接口简介<br>4.OBD的9大模式介绍<br>OBD（On-Board Diagnostic）指的是在线诊断系统，是汽车上的一种用于监控车辆状况以及控制排放的一种在线诊断系统。本篇文章主要围绕OBD的九种模式进行介绍，当然也会辅助介绍一些OBD相关的内容。</p>
+<p>1.OBD用来做什么<br>对于一般的车主，可能有接触过OBD口，可以用它来查看一些车内的参数等等，但是OBD它到底用来做什么用呢？</p>
+<p>还是以一贯的思路，进行分点说明</p>
+<p>a.用于监控车辆基本参数，例如监控里程、车速、油门踏板位置、冷却液温度等等的一些参数；</p>
+<p>b.用于监控排放相关的参数，这是OBD很核心的一个功能，比如各种尾气的含量，氧含量等等，以此来保证满足各国的标准；</p>
+<p>c.用于车辆故障的诊断，例如我们车故障灯亮了，送到维修店后，维修人员就会拿出诊断仪，请求发生的故障内容，以及故障时刻的冻结帧数据，以此来方便故障排查；</p>
+<p>d.当然还有小部分会使用OBD进行一些控制功能，这部分在中国是没有的。</p>
+<p>2.OBD和UDS的区别<br>大家看过我前面的文章的话，也有对UDS进行介绍，那么UDS和OBD都是车上诊断的标准，他们有什么区别呢？<br>首先从适用对象来说，OBD出现的更早，那么它主要针对传统燃油车，并且OBD主要是用于排放相关的诊断，而UDS是统一诊断系统，那么它的适用性则更广一点，它囊括了非排放相关的车身上所有ECU的诊断。可以简单的理解OBD就是用于排放相关的ECU，如发送机控制单元，减速器控制器等；而UDS则包含了车身上几乎所有ECU的诊断，例如VCU BCM DCDC等等。<br>第二点：也是因为他们适用对象的不同，所以他们支持的服务是不一样的，这点看标准就知道了。<br>稍微总结一下就是OBD主要用于与排放相关的ECU的诊断，而UDS则是排放除外的其他ECU的统一诊断标准。OBD的使用对象主要是传统燃油车中排放相关的ECU，而UDS使用对象既可以是燃油车中的ECU也可以是混动纯电动中的ECU。一般传统燃油或混动车中与排放相关的ECU既要支持OBD也要支持UDS，而其他的ECU一般仅仅需要支持UDS。<br>3.OBD的硬件接口简介</p>
+<p>从图中我们也知道，各个引脚之间的关系，那么这个端口也是通过国际标准进行定义的OBD-II端口，在使用时，我们需要买对应的端口来进行与汽车诊断端口进行通信。</p>
+<p>一般汽车这个诊断端口在我们的方向盘下面，油门踏板上面（不同厂家可能不一致）。</p>
+<p>4.OBD的9大模式（服务）介绍<br>为了能够快速的了解OBD的各个模式，以下针对每个模式从2方面进行介绍；</p>
+<p>1).模式的作用（使用场景）</p>
+<p>2),模式如何使用</p>
+<p>a.模式1-请求动力系统当前数据<br>1).模式的作用</p>
+<p>从这个定义我们就了解到，通过该模式我们可以去请求车辆上动力系统的一些数据，但是这些数据都是需要预先定义好的，如何进行定义呢，那么ISO标准规定了一些参数标识符即PID（parameter Identifiers），每个PID代表一个变量参数，但是呢在CAN上传输怎么去识别这个参数呢，其实就是顶一个8bit的数据来代表这个参数，比如PID 0x01 表示DTC清除后的监控状态，比如PID 0x05 表示电机冷却液的温度 ，那么ISO15031-5它定义了很多这样的PID参数，这样定义是很有意义的，因为这可以保证所有厂家的OBD可以尽可能的统一，从而方便通用。</p>
+<p>我们稍微总结一下，模式1的作用就是 通过预先标准定义好的一些PID参数，去请求动力系统当前的一些数据（如速度、里程、温度等），以此来了解当前车辆的一些状态。</p>
+<p>2).模式如何使用</p>
+<p>ISO其实定义了很多PID参数，但是并不要求所有的主机厂把这些参数都实现，也就是说PID参数是可以选择支持的。那么我们怎么知道这个厂家支持哪一些参数呢？其实模式1中它有一些PID 0x00\0x20\0x40\0x60\0x80等就是用来查询到底支持哪些服务的。具体如何使用如下：</p>
+<p>PID 0x00 用于查询（0x01~0x20）之间支持的PID参数</p>
+<p>PID 0x20 用于查询（0x21~0x40）之间支持的PID参数</p>
+<p>PID 0x40 用于查询 （0x41~0x60）之间支持的PID参数</p>
+<p>以此类推后面的0x60 0x80</p>
+<p>使用第一步：查询支持的PID参数（req表示请求（request），res表示答复（response））</p>
+<p>req：01 00 </p>
+<p>res：41 00 xx xx xx xx</p>
+<p>左起第一个xx表示0x01~0x08之间的PID支持情况 将xx转为2进制 如xx=0x65  -&gt;xx=0110 0101 从左往右 那么表示支持PID 0x02 0x03 0x06 0x08 </p>
+<p>左起第二个xx表示0x09~0x10之间的PID支持情况 按照同样的转化方式</p>
+<p>左起第三个xx表示0x11~0x18之间的PID 支持情况 按照同样的转化方式</p>
+<p>左起第四个xx表示0x19~0x20之间的PID支持情况 按照同样的转化方式</p>
+<p>是不是0x00就是查询0x01~0x20之间支持的PID情况？ </p>
+<p>同理对0x20 0x40等进行查询</p>
+<p>使用第二步：就可以读取相关支持的PID参数的值了，假如支持PID 0x04  0x05  0x0d</p>
+<p>req:01 04 05 0c</p>
+<p>res:41 04 xx xx 05 xx 0d xx </p>
+<p>其中xx表示支持的PID的值了，比如0d表示当前的车速，0d后面的xx的值是64，及对应的是100KM/h，即请求到的车速为当前100km/h</p>
+<p>多说几句就是我们可以每次只请求一个PID，也可以一次请求多个，最多6个，而答复的话可能不会按照顺序来，如果在CAN上，答复的数据超过8个byte的话，那么它就会分出几个帧来进行答复。</p>
+<p>b.模式2-请求冻结帧数据<br>1).模式的作用</p>
+<p>首先解释一下冻结帧，所谓的冻结帧你可以理解为故障发生时刻的一些环境数据，冻结帧的存在就是为了尽可能了解故障发生时的一些参数，以此来方便分析故障。</p>
+<p>因此我们可以这样说模式2的作用就是为了快速方便的了解，故障发生时刻的一个状态，以此来分析、排查以及定位故障，从而能够有效的提高售后维护的效率。</p>
+<p>2).模式的使用</p>
+<p>使用第一步：和模式1一样，先要查询支持的冻结帧的PID参数，格式也和模式1类似。</p>
+<p>使用第二步：因为冻结帧是因为故障发生导致存储的，因此我们先要知道导致存储的冻结帧的故障码是什么。</p>
+<p>req:02 02 xx                 //这里xx表示帧序号</p>
+<p>res:42 0x xx xx xx        //左起 第一个xx表示帧序号，第二个xx 表示DTC（故障码）高字节 第三个xx 表示DTC（故障码）低字节</p>
+<p>使用第三步：请求相应的冻结帧数据，比如支持PID 0x0C(速度) 0x05（温度）参数 ,请求frame 00</p>
+<p>req:02 0c 00 05 00   //这里00表示frame 00 </p>
+<p>res:43 0c 00 xx xx 05 00 xx   这里左起前两个xx表示速度  后面的xx表示温度</p>
+<p>c.模式3-请求排放相关的故障码<br>1).模式的作用</p>
+<p>首先我们了解一下故障码，所谓的故障码就是代表某一种故障的代码，比如氧气传感器短路的故障码为P0130 那么这些故障码在IDS15031-6中都有定义，对应can报文上两个字节DTC_H 和DTC_L  例如这里的P0130 对应的DTC_H = 0x01 DTC_L=0x30。</p>
+<p>那么模式3的作用就是请求当前确认的故障（Comfirmed DTC）的故障码，以此就可以了解车辆发生故障时，是哪个故障导致的，进而就可以根据该故障的机理来分析故障，维修车辆。</p>
+<p>2).模式的使用</p>
+<p>req:03</p>
+<p>res:43 03 01 41 01 45 01 48  // 03表示DTC的个数，后面三对颜色表示三个故障码P0141 P0145 P0148</p>
+<p>如果没有故障则会回复 00 00…</p>
+<p>d.模式4-清除排放相关的故障信息<br>1).模式的作用</p>
+<p>为啥要清除故障信息呢，因为车子在出厂后，我们不能让车故障灯亮着就出厂吧，这是其一，其二就是每次维修好之后，有必要将故障清除掉，表示该故障已经解决，还有就是可以腾出内存空间，以便后续发生的故障进行存储。</p>
+<p>2).模式的使用</p>
+<p>该模式的使用比较简单；</p>
+<p>req:04</p>
+<p>res:44</p>
+<p>就算没有故障，也会返回正响应；注意这里清除的数据比较多，包括故障码、冻结帧、测试数据等等排放相关的内存数据都会清除掉。</p>
+<p>e.模式5-请求氧传感器的检测结果<br>1).模式的作用</p>
+<p>显然根据名字我们就可以知道，这个模式的作用就是监控氧传感器的测试结果，因为氧气的浓度对燃烧过程有着重要的影响，因此对排放也有着重大的影响，因此有必要进行测试监控。一般支持模式6的话也可以通过模式6来代替模式5的功能。</p>
+<p>2)模式的使用</p>
+<p>使用第一步：查询支持的氧传感器支持的测试表示符TID（Test Identifiers），这是TID也在IDS15031-5的附录中有定义。如模式1和2查询PID一样，模式5查询TID也是类似使用0x00…来查询；</p>
+<p>使用第二步：通过PID 0x13  0x1D来查询氧传感器的位置，因为动力系统模块中，可能多个地方都有O2传感器，如图定义了字节信息对应传感器的位置</p>
+<p>使用第三步:查询氧传感器的测试结果，</p>
+<p>根据第一步获得的TID 如0x05 和第二步获得的O2传感器位置0x01，那么就可以进行获取氧传感器的测试结果。</p>
+<p>req:05 05 01</p>
+<p>res:45 05 01 12  00 19 //这里的12表示测试结果，00表示测试结果范围的最小值，19表示测试结果范围的最大值。</p>
+<p>f.模式6-请求指定监控系统的测试结果<br>1).模式的作用</p>
+<p>车上不仅仅氧传感器的结果需要监控，还有其他很多的地方需要结构，比如催化剂、蒸发系统等等，那么可以通过模式6来进行监控。</p>
+<p>那么主机厂也可以根据需要去定义监控各个系统模块ID以及需要进行测试的参数TID。</p>
+<p>2).模式的使用</p>
+<p>使用第一步：也是查询支持的TID</p>
+<p>使用第二步：查询支持的组件ID（若有的话）</p>
+<p>使用第三步：请求测试结果 比如 TID 0x11  模块ID 0x01</p>
+<p>req:06 11</p>
+<p>res:46 11 01 xx  xx  xx  xx //左起前两个xx表示测试结果，后两个xx表示测试值的限制值，意思就是表示测试结果是否在范围内。</p>
+<p>g.模式7-请求当前或上一驱动周期检测到的排放相关的故障码<br>1).模式的作用</p>
+<p>为啥有了03请求故障码，还需要07模式呢，我们可以看到，03模式主要请求的是确认的故障码（比如一个故障发生后，需要连续3个驱动周期才能发展为确认的故障），而这里07模式表示的是当前的或上一驱动周期发生的故障（这里强调的是上一驱动周期或当前驱动周期发生的，意思是pending），以上是他们请求的故障码的区别。那么需要请求pending类的故障呢？这是因为，每次维修人员修理完之后，会清理故障，为了了解这个故障是不是真正解决了，就需要重新试一下，然后看这个故障是不是又会出现，如果是通过模式3去了解，则至少需要三个操作循环，而模式7则可当前操作循环就可以知道。</p>
+<p>总结一下可以这么说07模式就是帮助技术员快速了解故障问题是否解决。</p>
+<p>2)模式的使用</p>
+<p>同03模式，可参考03模式。</p>
+<p>h.模式8-请求控制在线系统或组件<br>1).模式的作用</p>
+<p>因为这个模式使用的比较少，比如我国的所有OBD是不支持08模式的，以下对其进行简单的介绍。</p>
+<p>这个模式就是通过定义测试标识符TID以及测试数据，去操作ECU进行测试。</p>
+<p>2).模式的使用</p>
+<p>如定义了TID 0x01 测试数据 00 00 00 00 00</p>
+<p>req:08 01 00 00 00 00 00</p>
+<p>res:48 01 00 00 00 00 00</p>
+<p>i.模式9-请求整车信息<br>1)模式的作用</p>
+<p>大家知道车辆中，有一个很重要的信息就是VIN码，也就是车辆标识码，这个码可是这辆车的“身份证”，那么我们怎么读这个身份证信息呢，这就需要我们使用09模式了。</p>
+<p>此外还包括一些标定ID 标定校验ID ECU名称 IPT等信息可以通过09模式来读取。</p>
+<p>2)模式的使用</p>
+<p>和前面提到的PID TID一样，这里定义了一个叫InfoType的，你可以理解为消息类型，其实也同样是用一个byte来表示某个信息，比如infoType = 0x02表示VIN码这个信息。</p>
+<p>使用第一步：类似查询支持的PID TID一样，这里第一步也是查询支持的InfoType；</p>
+<p>使用第二步：根据支持的InfoType来请求其对应的值，如请求VIN码 0x02为例</p>
+<p>req:09 02</p>
+<p>res:49 02  32  31 47 53 78 98 27 18 38 38  85 92 92 82 71 82  92 //这里标红部分就是VIN的内容，如果是CAN的话会采用多帧传输，这里仅仅是示意。</p>
+<p>以上主要针对OBD进行说明，更多具有价值的是读者去体会和使用其中提到的PID TID以及InfoType，经过几次使用之后会对这个协议会有更深的理解。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/诊断协议/" rel="tag"><i class="fa fa-tag"></i> 诊断协议</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/13/qt应用/" rel="next" title="qt应用">
+                <i class="fa fa-chevron-left"></i> qt应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2020/02/09/linux应用学习笔记/" rel="prev" title="linux应用学习笔记">
+                linux应用学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jin Sheng</p>
+  <div class="site-description motion-element" itemprop="description">开心就好</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:jinsheng20@outlook.com" title="E-Mail &rarr; mailto:jinsheng20@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jin Sheng</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">37k</span>
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '5t6aCSzvdlJiskiDpgVq2o46-gzGzoHsz',
+    appKey: 'IJJvYGJ6zJ2uPPupBOh1jyoq',
+    placeholder: '���������õĽ�ӡ��',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jinsheng20.github.io/"/>
-  <updated>2019-08-21T14:12:09.953Z</updated>
+  <updated>2020-02-09T13:46:48.092Z</updated>
   <id>https://jinsheng20.github.io/</id>
   
   <author>
@@ -17,11 +17,143 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>J1939</title>
+    <link href="https://jinsheng20.github.io/2020/02/09/J1939/"/>
+    <id>https://jinsheng20.github.io/2020/02/09/J1939/</id>
+    <published>2020-02-09T13:00:23.000Z</published>
+    <updated>2020-02-09T13:46:48.092Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;0-SAE-J1939概述&quot;&gt;&lt;a href=&quot;#0-SAE-J1939概述&quot; class=&quot;headerlink&quot; title=&quot;0.SAE J1939概述&quot;&gt;&lt;/a&gt;0.SAE J1939概述&lt;/h2&gt;&lt;p&gt;SAE
+        
+      
+    
+    </summary>
+    
+      <category term="J1939" scheme="https://jinsheng20.github.io/categories/J1939/"/>
+    
+    
+      <category term="CAN" scheme="https://jinsheng20.github.io/tags/CAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>autosar com</title>
+    <link href="https://jinsheng20.github.io/2020/02/09/autosar%20com/"/>
+    <id>https://jinsheng20.github.io/2020/02/09/autosar com/</id>
+    <published>2020-02-09T13:00:23.000Z</published>
+    <updated>2020-02-09T14:24:40.384Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;关于AUTOSAR的底层驱动、平台OS、平台应用、RTE、应用软件这些和VxWorks653很相似，就不多赘述了。&lt;br&gt;此处说一下AUTOSAR独有的网络通讯规范和网络管理模块NM&lt;/p&gt;
+&lt;p&gt;AUTOSAR COM是AUTOSAR标准的一部分，它是从OSEK
+        
+      
+    
+    </summary>
+    
+      <category term="autosar com" scheme="https://jinsheng20.github.io/categories/autosar-com/"/>
+    
+    
+      <category term="autosar" scheme="https://jinsheng20.github.io/tags/autosar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>autosar NM(网络管理)</title>
+    <link href="https://jinsheng20.github.io/2020/02/09/autosar%20NM(%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86)/"/>
+    <id>https://jinsheng20.github.io/2020/02/09/autosar NM(网络管理)/</id>
+    <published>2020-02-09T13:00:23.000Z</published>
+    <updated>2020-02-09T13:47:38.356Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里的NM主要是针对Can协议的网路管理。&lt;/p&gt;
+&lt;p&gt;AUTOSAR
+        
+      
+    
+    </summary>
+    
+      <category term="autosar NM" scheme="https://jinsheng20.github.io/categories/autosar-NM/"/>
+    
+    
+      <category term="autosar" scheme="https://jinsheng20.github.io/tags/autosar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux应用学习笔记</title>
+    <link href="https://jinsheng20.github.io/2020/02/09/linux%E5%BA%94%E7%94%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://jinsheng20.github.io/2020/02/09/linux应用学习笔记/</id>
+    <published>2020-02-09T13:00:23.000Z</published>
+    <updated>2020-02-09T14:26:13.968Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;虚拟网卡设置&quot;&gt;&lt;a href=&quot;#虚拟网卡设置&quot; class=&quot;headerlink&quot; title=&quot;虚拟网卡设置&quot;&gt;&lt;/a&gt;虚拟网卡设置&lt;/h2&gt;&lt;p&gt;###（1）桥接模式&lt;br&gt;在桥接模式下，虚拟系统和宿主机器的关系，就像连接在同一个Hub
+        
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://jinsheng20.github.io/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://jinsheng20.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>obd诊断协议</title>
+    <link href="https://jinsheng20.github.io/2019/08/27/obd%E8%AF%8A%E6%96%AD%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://jinsheng20.github.io/2019/08/27/obd诊断协议/</id>
+    <published>2019-08-27T13:23:17.000Z</published>
+    <updated>2020-02-09T13:02:23.138Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文链接：&lt;a href=&quot;https://blog.csdn.net/AgingMoon/article/details/78225200&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CAN" scheme="https://jinsheng20.github.io/categories/CAN/"/>
+    
+    
+      <category term="诊断协议" scheme="https://jinsheng20.github.io/tags/%E8%AF%8A%E6%96%AD%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>qt应用</title>
     <link href="https://jinsheng20.github.io/2019/08/13/qt%E5%BA%94%E7%94%A8/"/>
     <id>https://jinsheng20.github.io/2019/08/13/qt应用/</id>
     <published>2019-08-13T13:51:29.000Z</published>
-    <updated>2019-08-21T14:12:09.953Z</updated>
+    <updated>2020-02-09T12:50:58.004Z</updated>
     
     <summary type="html">
     
@@ -118,11 +250,11 @@
       <category term="汽车电子" scheme="https://jinsheng20.github.io/categories/%E6%B1%BD%E8%BD%A6%E7%94%B5%E5%AD%90/"/>
     
     
+      <category term="autosar" scheme="https://jinsheng20.github.io/tags/autosar/"/>
+    
       <category term="dlt" scheme="https://jinsheng20.github.io/tags/dlt/"/>
     
       <category term="log" scheme="https://jinsheng20.github.io/tags/log/"/>
-    
-      <category term="autosar" scheme="https://jinsheng20.github.io/tags/autosar/"/>
     
   </entry>
   
@@ -131,7 +263,7 @@
     <link href="https://jinsheng20.github.io/2019/07/26/eclipse/"/>
     <id>https://jinsheng20.github.io/2019/07/26/eclipse/</id>
     <published>2019-07-26T13:21:28.000Z</published>
-    <updated>2019-08-11T13:57:39.758Z</updated>
+    <updated>2020-02-09T12:45:53.822Z</updated>
     
     <summary type="html">
     
@@ -157,7 +289,7 @@
     <link href="https://jinsheng20.github.io/2019/07/21/pyqt%E7%AC%94%E8%AE%B0/"/>
     <id>https://jinsheng20.github.io/2019/07/21/pyqt笔记/</id>
     <published>2019-07-21T13:00:23.000Z</published>
-    <updated>2019-08-11T12:03:46.785Z</updated>
+    <updated>2020-02-09T13:42:50.059Z</updated>
     
     <summary type="html">
     
@@ -165,7 +297,7 @@
       
         
         
-          &lt;h1 id=&quot;信号槽连接&quot;&gt;&lt;a href=&quot;#信号槽连接&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;QChart-图表描绘&quot;&gt;&lt;a href=&quot;#QChart-图表描绘&quot; class=&quot;headerlink&quot; title=&quot;QChart 图表描绘&quot;&gt;&lt;/a&gt;QChart 图表描绘&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;self._plotChart =
         
       
     
